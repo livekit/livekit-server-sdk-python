@@ -28,7 +28,9 @@ commands = pytest
 name = "livekit-server-sdk-python"
 authors = [{name = "Tradable Bits", email = "dev@tradablebits.com"}]
 readme = "README.md"
+licence = {file = "LICENCE"}
 classifiers = [
+    "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python",
@@ -52,4 +54,4 @@ dev = [
     "isort",
     "pytest",
     "tox",
-]
+]]
