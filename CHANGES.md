@@ -15,7 +15,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - `dist` directory in `.gitignore`
 - `LICENCE` file
-- add licence to `pyproject.toml`
+- add `licence` to `pyproject.toml`
+- add `python-requires` to `pyproject.toml`
 
 ## [0.1.0] - 2021-12-10
 
