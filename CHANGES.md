@@ -7,6 +7,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Meta
+
+- `dist` directory in `.gitignore`
+
 ## [0.1.0] - 2021-12-10
 
 - Initial release

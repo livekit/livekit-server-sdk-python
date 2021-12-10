@@ -1,4 +1,8 @@
+# protocol repository
 protocol
+
+# build files
+dist
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
