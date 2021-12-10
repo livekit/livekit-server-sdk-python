@@ -10,6 +10,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Meta
 
 - `dist` directory in `.gitignore`
+- `LICENCE` file
 
 ## [0.1.0] - 2021-12-10
 
