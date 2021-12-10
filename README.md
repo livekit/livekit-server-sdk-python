@@ -33,7 +33,7 @@ access_token = AccessToken("<api key>", "<api secret>", grant=grant)
 client = RoomServiceClient("<host>")
 
 # Make a request using the client.
-ctx = Context({"Authorization": f"Bearer: {access_token.to_jwt()}"})
+ctx = Context(headers={"Authorization": f"Bearer: {access_token.to_jwt()}"})
 request = MuteRoomTrackRequest(room="<room name>", track="<track sid>")
 client.MutePublishedTrack(ctx=ctx, request=request)
 ```

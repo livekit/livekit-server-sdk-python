@@ -7,6 +7,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- example: need to pass `headers` dictionary as keyword argument to `Context`
+
 ### Meta
 
 - `dist` directory in `.gitignore`
