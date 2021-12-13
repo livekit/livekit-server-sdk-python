@@ -7,6 +7,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- build: add check for isort command
+
 ## [0.1.1] - 2021-12-10
 
 ### Fixed

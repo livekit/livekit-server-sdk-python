@@ -19,6 +19,9 @@ fi
 if ! command -v black > /dev/null; then
   die "black not found"
 fi
+if ! command -v isort > /dev/null; then
+  die "isort not found"
+fi
 
 if [ -d "$PYTHON_OUT_DIR" ]; then
   log_info "Cleaning directory $PYTHON_OUT_DIR"
