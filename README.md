@@ -17,25 +17,10 @@ token = access_token.to_jwt()
 ### Using `RoomServiceClient`
 
 ```py
-from livekit import (
-    AccessToken,
-    Context,
-    MuteRoomTrackRequest,
-    RoomServiceClient,
-    VideoGrant,
-)
+from livekit import RoomServiceClient
 
-# Create AccessToken with the needed permissions.
-grant = VideoGrant(room_admin=True)
-access_token = AccessToken("<api key>", "<api secret>", grant=grant)
-
-# Initialize the client.
-client = RoomServiceClient("<host>")
-
-# Make a request using the client.
-ctx = Context(headers={"Authorization": f"Bearer: {access_token.to_jwt()}"})
-request = MuteRoomTrackRequest(room="<room name>", track="<track sid>")
-client.MutePublishedTrack(ctx=ctx, request=request)
+client = RoomServiceClient("<host>", "<api key>", "<api secret>")
+client.mute_published_track(room="<room name>", track="<track sid>")
 ```
 
 ## Local Development
@@ -61,10 +46,21 @@ $ flit install --symlink
 
 ### Run tests:
 
+The `RoomServiceClient` tests require a running LiveKit server.
+See the [LiveKit Getting Started](https://docs.livekit.io/guides/getting-started/) page.
+
+The tests use the following environment variables to locate the LiveKit server.
+
 ```sh
-$ tox
-# or for a specific python version:
-$ tox -e py38
+export LIVEKIT_HOST='http://localhost:7880'
+export LIVEKIT_API_KEY='<api key>'
+export LIVEKIT_API_SECRET='<api secret>'
+```
+
+Run the tests:
+
+```sh
+$ pytest
 ```
 
 ### Updating `protocol`
