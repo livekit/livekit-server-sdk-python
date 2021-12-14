@@ -1,5 +1,6 @@
 import jwt
 import pytest
+from _datetime import timedelta
 
 from livekit import AccessToken, VideoGrant
 
@@ -22,3 +23,14 @@ def test_access_token_jwt_with_identity():
     assert decoded["iss"] == api_key
     assert decoded["nbf"] < decoded["exp"]
     assert decoded["sub"] == identity
+
+
+def test_access_token_invalid_ttl():
+    grant = VideoGrant()
+    with pytest.raises(ValueError):
+        _ = AccessToken(
+            "key",
+            "secret",
+            grant=grant,
+            ttl=timedelta(seconds=0),
+        )

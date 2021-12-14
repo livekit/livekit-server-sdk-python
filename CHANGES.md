@@ -17,6 +17,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - build: add check for isort command
+- AccessToken: make ttl not nullable and assert ttl > 0
 
 ### Meta
 

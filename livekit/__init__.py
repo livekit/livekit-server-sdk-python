@@ -86,11 +86,13 @@ class AccessToken:
     api_secret: str
     grant: VideoGrant = field(default_factory=VideoGrant)
     identity: Optional[str] = None
-    ttl: Optional[timedelta] = DEFAULT_TOKEN_TTL
+    ttl: timedelta = DEFAULT_TOKEN_TTL
 
     def __post_init__(self):
         if self.grant.room_join and self.identity is None:
             raise ValueError("identity is required for room_join grant")
+        if self.ttl.total_seconds() <= 0:
+            raise ValueError("AccessToken must expire in the future.")
 
     def to_jwt(self) -> str:
         payload = {
