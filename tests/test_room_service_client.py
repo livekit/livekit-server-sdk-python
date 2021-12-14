@@ -1,9 +1,8 @@
 import os
-from uuid import uuid4
 
 import pytest
 
-from livekit import RoomServiceClient, Room, DataPacketKind
+from livekit import DataPacketKind, Room, RoomServiceClient
 
 
 @pytest.fixture
