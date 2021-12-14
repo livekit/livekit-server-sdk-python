@@ -17,5 +17,7 @@ env
 .vscode/
 
 # Tests
-.tox
+.coverage
 .pytest_cache
+.tox
+htmlcov

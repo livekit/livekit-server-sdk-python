@@ -52,7 +52,8 @@ Home = "https://github.com/tradablebits/livekit-server-sdk-python"
 [project.optional-dependencies]
 dev = [
     "black",
+    "coverage",
     "isort",
     "pytest",
-    "tox",
+    "pytest-coverage",
 ]
