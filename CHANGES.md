@@ -21,6 +21,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Meta
 
 - test: add coverage and pytest-coverage. remove tox
+- test: add tests for AccessToken
 
 ## [0.1.1] - 2021-12-10
 
