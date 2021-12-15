@@ -25,6 +25,24 @@ def test_access_token_jwt_with_identity():
     assert decoded["sub"] == identity
 
 
+def test_access_token_with_metadata():
+    api_key = "key"
+    api_secret = "secret"
+    grant = VideoGrant()
+    identity = "Bob"
+    metadata = "bob is cool"
+    access_token = AccessToken(
+        api_key,
+        api_secret,
+        grant=grant,
+        identity=identity,
+        metadata=metadata,
+    )
+    token = access_token.to_jwt()
+    decoded = jwt.decode(token, key=api_secret, algorithms=["HS256"])
+    assert decoded["metadata"] == metadata
+
+
 def test_access_token_invalid_ttl():
     grant = VideoGrant()
     with pytest.raises(ValueError):

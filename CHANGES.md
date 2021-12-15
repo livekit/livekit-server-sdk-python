@@ -7,6 +7,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- add `metadata` parameter to `AccessToken` constructor
+
 ### Fixed
 
 - add `room` permission for `update_participant` and `update_subscriptions` in `RoomServiceClient`.

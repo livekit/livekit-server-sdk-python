@@ -87,6 +87,7 @@ class AccessToken:
     grant: VideoGrant = field(default_factory=VideoGrant)
     identity: Optional[str] = None
     ttl: timedelta = DEFAULT_TOKEN_TTL
+    metadata: Optional[str] = None
 
     def __post_init__(self):
         if self.grant.room_join and self.identity is None:
@@ -101,6 +102,8 @@ class AccessToken:
             "nbf": calendar.timegm(datetime.utcnow().utctimetuple()),
             "exp": calendar.timegm((datetime.utcnow() + self.ttl).utctimetuple()),
         }
+        if self.metadata is not None:
+            payload["metadata"] = self.metadata
         if self.identity is not None:
             payload["sub"] = self.identity
         return jwt.encode(payload, self.api_secret)
