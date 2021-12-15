@@ -225,7 +225,7 @@ class RoomServiceClient:
         Update participant metadata, will cause updates to be broadcasted to everyone
         in the room.
         """
-        ctx = self._create_context(room_admin=True)
+        ctx = self._create_context(room_admin=True, room=room)
         request = UpdateParticipantRequest(
             room=room,
             identity=identity,
@@ -247,7 +247,7 @@ class RoomServiceClient:
         As an admin, you can subscribe a participant to a track even if they do not
         have canSubscribe permission.
         """
-        ctx = self._create_context(room_admin=True)
+        ctx = self._create_context(room_admin=True, room=room)
         request = UpdateSubscriptionsRequest(
             room=room,
             identity=identity,

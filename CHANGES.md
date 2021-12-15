@@ -7,6 +7,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- add `room` permission for `update_participant` and `update_subscriptions` in `RoomServiceClient`.
+  Fixes permissions denied error.
+
 ## [0.2.0] - 2021-12-14
 
 ### Added
