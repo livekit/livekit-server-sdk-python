@@ -194,7 +194,7 @@ class RoomServiceClient:
         """
         Removes a participant from room.
         """
-        ctx = self._create_context(room_admin=True)
+        ctx = self._create_context(room_admin=True, room=room)
         request = RoomParticipantIdentity(room=room, identity=identity)
         self._client.RemoveParticipant(ctx=ctx, request=request)
 
