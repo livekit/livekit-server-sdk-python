@@ -1,5 +1,7 @@
 # LiveKit Server SDK
 
+![https://pypi.org/project/livekit-server-sdk-python/](https://img.shields.io/pypi/v/livekit-server-sdk-python.svg)
+
 API Reference: https://docs.livekit.io/guides/server-api
 
 ## Examples
