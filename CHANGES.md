@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.3] - 2021-12-17
+
 ### Fixed
 
 - permissions error for `get_participant`
@@ -65,7 +67,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Initial release
 - [LiveKit protocol v0.11.0](https://github.com/livekit/protocol/releases/tag/v0.11.0)
 
-[Unreleased]: https://github.com/tradablebits/livekit-server-sdk-python/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/tradablebits/livekit-server-sdk-python/compare/v0.2.3...HEAD
+
+[0.2.3]: https://github.com/tradablebits/livekit-server-sdk-python/compare/v0.2.2...v0.2.3
 
 [0.2.2]: https://github.com/tradablebits/livekit-server-sdk-python/compare/v0.2.1...v0.2.2
 

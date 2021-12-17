@@ -43,7 +43,7 @@ __all__ = [
     "RoomServiceServer",
 ]
 
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 
 import calendar
 from dataclasses import asdict, dataclass, field
