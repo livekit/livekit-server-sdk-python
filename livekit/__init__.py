@@ -186,7 +186,7 @@ class RoomServiceClient:
         """
         Gets information on a specific participant
         """
-        ctx = self._create_context(room_admin=True)
+        ctx = self._create_context(room_admin=True, room=room)
         request = RoomParticipantIdentity(room=room, identity=identity)
         return self._client.GetParticipant(ctx=ctx, request=request)
 

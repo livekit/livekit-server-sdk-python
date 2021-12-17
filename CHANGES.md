@@ -7,6 +7,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- permissions error for `get_participant`
+
 ## [0.2.2] - 2021-12-16
 
 ### Fixed
