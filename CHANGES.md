@@ -7,6 +7,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- updated LiveKit protocol to v0.11.13
+
 ## [0.2.3] - 2021-12-17
 
 ### Fixed
