@@ -15,6 +15,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Changed build system from flit to setuptools
 - Added [pre-commit](https://pre-commit.com/) hooks
+- Fix tox issue from setuptools
 
 ## [0.2.4] - 2022-03-17
 

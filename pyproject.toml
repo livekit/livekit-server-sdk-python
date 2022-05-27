@@ -18,5 +18,7 @@ isolated_build = true
 
 [testenv]
 deps = pytest
-commands = pytest
+commands =
+    pip install --editable .
+    pytest
 """
