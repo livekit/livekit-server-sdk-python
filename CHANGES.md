@@ -7,6 +7,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- Actually fix proto and twirp modules not importing correctly :^)
+
 ## [0.3.1] - 2022-05-27 (yanked)
 
 ### Fixed
