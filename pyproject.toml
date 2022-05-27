@@ -1,9 +1,6 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
-
-[tool.flit.module]
-name = "livekit"
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
 
 [tool.black]
 target-version = ["py37"]
@@ -23,37 +20,3 @@ isolated_build = true
 deps = pytest
 commands = pytest
 """
-
-[project]
-name = "livekit-server-sdk-python"
-authors = [{name = "Tradable Bits", email = "dev@tradablebits.com"}]
-readme = "README.md"
-licence = {file = "LICENCE"}
-classifiers = [
-    "License :: OSI Approved :: Apache Software License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-]
-dynamic = ["version", "description"]
-requires-python = ">=3.7,<4"
-dependencies = [
-    "pyjwt >= 2.0.0, < 3.0",
-    "twirp >= 0.0.5, < 1.0",
-]
-
-[project.urls]
-Home = "https://github.com/tradablebits/livekit-server-sdk-python"
-
-[project.optional-dependencies]
-dev = [
-    "black",
-    "coverage",
-    "isort",
-    "pytest",
-    "pytest-coverage",
-]

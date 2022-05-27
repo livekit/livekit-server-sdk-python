@@ -42,8 +42,7 @@ client.mute_published_track(room="<room name>", track="<track sid>")
 ```sh
 $ python3 -m venv env
 $ source env/bin/activate
-$ pip install flit
-$ flit install --symlink
+$ pip install --editable '.[dev]'
 ```
 
 ### Run tests:

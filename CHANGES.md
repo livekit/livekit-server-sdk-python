@@ -7,9 +7,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Changed
+### Meta
+
+- Changed build system from flit to setuptools
 
 ## [0.2.4] - 2022-03-17
+
+### Changed
 
 - updated LiveKit protocol to v0.11.13
 
