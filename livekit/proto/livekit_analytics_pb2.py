@@ -4,10 +4,8 @@
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
-from google.protobuf import message as _message
-from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf.internal import enum_type_wrapper
+from google.protobuf.internal import builder as _builder
 
 # @@protoc_insertion_point(imports)
 
@@ -20,136 +18,33 @@ from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__
 from . import livekit_models_pb2 as livekit__models__pb2
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
-    b'\n\x17livekit_analytics.proto\x12\x07livekit\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x14livekit_models.proto"f\n\x13\x41nalyticsVideoLayer\x12\r\n\x05layer\x18\x01 \x01(\x05\x12\x15\n\rtotal_packets\x18\x02 \x01(\r\x12\x13\n\x0btotal_bytes\x18\x03 \x01(\x04\x12\x14\n\x0ctotal_frames\x18\x04 \x01(\r"\x99\x03\n\x0f\x41nalyticsStream\x12\x0c\n\x04ssrc\x18\x01 \x01(\r\x12\x1d\n\x15total_primary_packets\x18\x02 \x01(\r\x12\x1b\n\x13total_primary_bytes\x18\x03 \x01(\x04\x12 \n\x18total_retransmit_packets\x18\x04 \x01(\r\x12\x1e\n\x16total_retransmit_bytes\x18\x05 \x01(\x04\x12\x1d\n\x15total_padding_packets\x18\x06 \x01(\r\x12\x1b\n\x13total_padding_bytes\x18\x07 \x01(\x04\x12\x1a\n\x12total_packets_lost\x18\x08 \x01(\r\x12\x14\n\x0ctotal_frames\x18\t \x01(\r\x12\x0b\n\x03rtt\x18\n \x01(\r\x12\x0e\n\x06jitter\x18\x0b \x01(\r\x12\x13\n\x0btotal_nacks\x18\x0c \x01(\r\x12\x12\n\ntotal_plis\x18\r \x01(\r\x12\x12\n\ntotal_firs\x18\x0e \x01(\r\x12\x32\n\x0cvideo_layers\x18\x0f \x03(\x0b\x32\x1c.livekit.AnalyticsVideoLayer"\x8f\x02\n\rAnalyticsStat\x12\x15\n\ranalytics_key\x18\x01 \x01(\t\x12!\n\x04kind\x18\x02 \x01(\x0e\x32\x13.livekit.StreamType\x12.\n\ntime_stamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0c\n\x04node\x18\x04 \x01(\t\x12\x0f\n\x07room_id\x18\x05 \x01(\t\x12\x11\n\troom_name\x18\x06 \x01(\t\x12\x16\n\x0eparticipant_id\x18\x07 \x01(\t\x12\x10\n\x08track_id\x18\x08 \x01(\t\x12\r\n\x05score\x18\t \x01(\x02\x12)\n\x07streams\x18\n \x03(\x0b\x32\x18.livekit.AnalyticsStream"7\n\x0e\x41nalyticsStats\x12%\n\x05stats\x18\x01 \x03(\x0b\x32\x16.livekit.AnalyticsStat"e\n\x13\x41nalyticsClientMeta\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0c\n\x04node\x18\x02 \x01(\t\x12\x13\n\x0b\x63lient_addr\x18\x03 \x01(\t\x12\x1b\n\x13\x63lient_connect_time\x18\x04 \x01(\r"\x9e\x03\n\x0e\x41nalyticsEvent\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.livekit.AnalyticsEventType\x12-\n\ttimestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0f\n\x07room_id\x18\x03 \x01(\t\x12\x1b\n\x04room\x18\x04 \x01(\x0b\x32\r.livekit.Room\x12\x16\n\x0eparticipant_id\x18\x05 \x01(\t\x12-\n\x0bparticipant\x18\x06 \x01(\x0b\x32\x18.livekit.ParticipantInfo\x12\x10\n\x08track_id\x18\x07 \x01(\t\x12!\n\x05track\x18\x08 \x01(\x0b\x32\x12.livekit.TrackInfo\x12\x14\n\x0crecording_id\x18\t \x01(\t\x12\x15\n\ranalytics_key\x18\n \x01(\t\x12(\n\x0b\x63lient_info\x18\x0b \x01(\x0b\x32\x13.livekit.ClientInfo\x12\x31\n\x0b\x63lient_meta\x18\x0c \x01(\x0b\x32\x1c.livekit.AnalyticsClientMeta":\n\x0f\x41nalyticsEvents\x12\'\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x17.livekit.AnalyticsEvent**\n\nStreamType\x12\x0c\n\x08UPSTREAM\x10\x00\x12\x0e\n\nDOWNSTREAM\x10\x01*\x9e\x02\n\x12\x41nalyticsEventType\x12\x10\n\x0cROOM_CREATED\x10\x00\x12\x0e\n\nROOM_ENDED\x10\x01\x12\x16\n\x12PARTICIPANT_JOINED\x10\x02\x12\x14\n\x10PARTICIPANT_LEFT\x10\x03\x12\x13\n\x0fTRACK_PUBLISHED\x10\x04\x12\x15\n\x11TRACK_UNPUBLISHED\x10\x05\x12\x14\n\x10TRACK_SUBSCRIBED\x10\x06\x12\x16\n\x12TRACK_UNSUBSCRIBED\x10\x07\x12\x15\n\x11RECORDING_STARTED\x10\x08\x12\x13\n\x0fRECORDING_ENDED\x10\t\x12\x1a\n\x16TRACK_PUBLISHED_UPDATE\x10\n\x12\x16\n\x12PARTICIPANT_ACTIVE\x10\x0b\x32\xa4\x01\n\x18\x41nalyticsRecorderService\x12\x42\n\x0bIngestStats\x12\x17.livekit.AnalyticsStats\x1a\x16.google.protobuf.Empty"\x00(\x01\x12\x44\n\x0cIngestEvents\x12\x18.livekit.AnalyticsEvents\x1a\x16.google.protobuf.Empty"\x00(\x01\x42\x46Z#github.com/livekit/protocol/livekit\xaa\x02\rLiveKit.Proto\xea\x02\x0eLiveKit::Protob\x06proto3'
+    b'\n\x17livekit_analytics.proto\x12\x07livekit\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x14livekit_models.proto"T\n\x13\x41nalyticsVideoLayer\x12\r\n\x05layer\x18\x01 \x01(\x05\x12\x0f\n\x07packets\x18\x02 \x01(\r\x12\r\n\x05\x62ytes\x18\x03 \x01(\x04\x12\x0e\n\x06\x66rames\x18\x04 \x01(\r"\xd7\x02\n\x0f\x41nalyticsStream\x12\x0c\n\x04ssrc\x18\x01 \x01(\r\x12\x17\n\x0fprimary_packets\x18\x02 \x01(\r\x12\x15\n\rprimary_bytes\x18\x03 \x01(\x04\x12\x1a\n\x12retransmit_packets\x18\x04 \x01(\r\x12\x18\n\x10retransmit_bytes\x18\x05 \x01(\x04\x12\x17\n\x0fpadding_packets\x18\x06 \x01(\r\x12\x15\n\rpadding_bytes\x18\x07 \x01(\x04\x12\x14\n\x0cpackets_lost\x18\x08 \x01(\r\x12\x0e\n\x06\x66rames\x18\t \x01(\r\x12\x0b\n\x03rtt\x18\n \x01(\r\x12\x0e\n\x06jitter\x18\x0b \x01(\r\x12\r\n\x05nacks\x18\x0c \x01(\r\x12\x0c\n\x04plis\x18\r \x01(\r\x12\x0c\n\x04\x66irs\x18\x0e \x01(\r\x12\x32\n\x0cvideo_layers\x18\x0f \x03(\x0b\x32\x1c.livekit.AnalyticsVideoLayer"\x8f\x02\n\rAnalyticsStat\x12\x15\n\ranalytics_key\x18\x01 \x01(\t\x12!\n\x04kind\x18\x02 \x01(\x0e\x32\x13.livekit.StreamType\x12.\n\ntime_stamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0c\n\x04node\x18\x04 \x01(\t\x12\x0f\n\x07room_id\x18\x05 \x01(\t\x12\x11\n\troom_name\x18\x06 \x01(\t\x12\x16\n\x0eparticipant_id\x18\x07 \x01(\t\x12\x10\n\x08track_id\x18\x08 \x01(\t\x12\r\n\x05score\x18\t \x01(\x02\x12)\n\x07streams\x18\n \x03(\x0b\x32\x18.livekit.AnalyticsStream"7\n\x0e\x41nalyticsStats\x12%\n\x05stats\x18\x01 \x03(\x0b\x32\x16.livekit.AnalyticsStat"e\n\x13\x41nalyticsClientMeta\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0c\n\x04node\x18\x02 \x01(\t\x12\x13\n\x0b\x63lient_addr\x18\x03 \x01(\t\x12\x1b\n\x13\x63lient_connect_time\x18\x04 \x01(\r"\x9b\x04\n\x0e\x41nalyticsEvent\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.livekit.AnalyticsEventType\x12-\n\ttimestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0f\n\x07room_id\x18\x03 \x01(\t\x12\x1b\n\x04room\x18\x04 \x01(\x0b\x32\r.livekit.Room\x12\x16\n\x0eparticipant_id\x18\x05 \x01(\t\x12-\n\x0bparticipant\x18\x06 \x01(\x0b\x32\x18.livekit.ParticipantInfo\x12\x10\n\x08track_id\x18\x07 \x01(\t\x12!\n\x05track\x18\x08 \x01(\x0b\x32\x12.livekit.TrackInfo\x12\x14\n\x0crecording_id\x18\t \x01(\t\x12\x15\n\ranalytics_key\x18\n \x01(\t\x12(\n\x0b\x63lient_info\x18\x0b \x01(\x0b\x32\x13.livekit.ClientInfo\x12\x31\n\x0b\x63lient_meta\x18\x0c \x01(\x0b\x32\x1c.livekit.AnalyticsClientMeta\x12\x11\n\tegress_id\x18\r \x01(\t\x12;\n\x1cmax_subscribed_video_quality\x18\x0e \x01(\x0e\x32\x15.livekit.VideoQuality\x12+\n\tpublisher\x18\x0f \x01(\x0b\x32\x18.livekit.ParticipantInfo":\n\x0f\x41nalyticsEvents\x12\'\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x17.livekit.AnalyticsEvent**\n\nStreamType\x12\x0c\n\x08UPSTREAM\x10\x00\x12\x0e\n\nDOWNSTREAM\x10\x01*\xec\x02\n\x12\x41nalyticsEventType\x12\x10\n\x0cROOM_CREATED\x10\x00\x12\x0e\n\nROOM_ENDED\x10\x01\x12\x16\n\x12PARTICIPANT_JOINED\x10\x02\x12\x14\n\x10PARTICIPANT_LEFT\x10\x03\x12\x13\n\x0fTRACK_PUBLISHED\x10\x04\x12\x15\n\x11TRACK_UNPUBLISHED\x10\x05\x12\x14\n\x10TRACK_SUBSCRIBED\x10\x06\x12\x16\n\x12TRACK_UNSUBSCRIBED\x10\x07\x12\x15\n\x11RECORDING_STARTED\x10\x08\x12\x13\n\x0fRECORDING_ENDED\x10\t\x12\x1a\n\x16TRACK_PUBLISHED_UPDATE\x10\n\x12\x16\n\x12PARTICIPANT_ACTIVE\x10\x0b\x12\x12\n\x0e\x45GRESS_STARTED\x10\x0c\x12\x10\n\x0c\x45GRESS_ENDED\x10\r\x12&\n"TRACK_MAX_SUBSCRIBED_VIDEO_QUALITY\x10\x0e\x32\xa4\x01\n\x18\x41nalyticsRecorderService\x12\x42\n\x0bIngestStats\x12\x17.livekit.AnalyticsStats\x1a\x16.google.protobuf.Empty"\x00(\x01\x12\x44\n\x0cIngestEvents\x12\x18.livekit.AnalyticsEvents\x1a\x16.google.protobuf.Empty"\x00(\x01\x42\x46Z#github.com/livekit/protocol/livekit\xaa\x02\rLiveKit.Proto\xea\x02\x0eLiveKit::Protob\x06proto3'
 )
 
-_STREAMTYPE = DESCRIPTOR.enum_types_by_name["StreamType"]
-StreamType = enum_type_wrapper.EnumTypeWrapper(_STREAMTYPE)
-_ANALYTICSEVENTTYPE = DESCRIPTOR.enum_types_by_name["AnalyticsEventType"]
-AnalyticsEventType = enum_type_wrapper.EnumTypeWrapper(_ANALYTICSEVENTTYPE)
-UPSTREAM = 0
-DOWNSTREAM = 1
-ROOM_CREATED = 0
-ROOM_ENDED = 1
-PARTICIPANT_JOINED = 2
-PARTICIPANT_LEFT = 3
-TRACK_PUBLISHED = 4
-TRACK_UNPUBLISHED = 5
-TRACK_SUBSCRIBED = 6
-TRACK_UNSUBSCRIBED = 7
-RECORDING_STARTED = 8
-RECORDING_ENDED = 9
-TRACK_PUBLISHED_UPDATE = 10
-PARTICIPANT_ACTIVE = 11
-
-
-_ANALYTICSVIDEOLAYER = DESCRIPTOR.message_types_by_name["AnalyticsVideoLayer"]
-_ANALYTICSSTREAM = DESCRIPTOR.message_types_by_name["AnalyticsStream"]
-_ANALYTICSSTAT = DESCRIPTOR.message_types_by_name["AnalyticsStat"]
-_ANALYTICSSTATS = DESCRIPTOR.message_types_by_name["AnalyticsStats"]
-_ANALYTICSCLIENTMETA = DESCRIPTOR.message_types_by_name["AnalyticsClientMeta"]
-_ANALYTICSEVENT = DESCRIPTOR.message_types_by_name["AnalyticsEvent"]
-_ANALYTICSEVENTS = DESCRIPTOR.message_types_by_name["AnalyticsEvents"]
-AnalyticsVideoLayer = _reflection.GeneratedProtocolMessageType(
-    "AnalyticsVideoLayer",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _ANALYTICSVIDEOLAYER,
-        "__module__": "livekit_analytics_pb2"
-        # @@protoc_insertion_point(class_scope:livekit.AnalyticsVideoLayer)
-    },
-)
-_sym_db.RegisterMessage(AnalyticsVideoLayer)
-
-AnalyticsStream = _reflection.GeneratedProtocolMessageType(
-    "AnalyticsStream",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _ANALYTICSSTREAM,
-        "__module__": "livekit_analytics_pb2"
-        # @@protoc_insertion_point(class_scope:livekit.AnalyticsStream)
-    },
-)
-_sym_db.RegisterMessage(AnalyticsStream)
-
-AnalyticsStat = _reflection.GeneratedProtocolMessageType(
-    "AnalyticsStat",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _ANALYTICSSTAT,
-        "__module__": "livekit_analytics_pb2"
-        # @@protoc_insertion_point(class_scope:livekit.AnalyticsStat)
-    },
-)
-_sym_db.RegisterMessage(AnalyticsStat)
-
-AnalyticsStats = _reflection.GeneratedProtocolMessageType(
-    "AnalyticsStats",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _ANALYTICSSTATS,
-        "__module__": "livekit_analytics_pb2"
-        # @@protoc_insertion_point(class_scope:livekit.AnalyticsStats)
-    },
-)
-_sym_db.RegisterMessage(AnalyticsStats)
-
-AnalyticsClientMeta = _reflection.GeneratedProtocolMessageType(
-    "AnalyticsClientMeta",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _ANALYTICSCLIENTMETA,
-        "__module__": "livekit_analytics_pb2"
-        # @@protoc_insertion_point(class_scope:livekit.AnalyticsClientMeta)
-    },
-)
-_sym_db.RegisterMessage(AnalyticsClientMeta)
-
-AnalyticsEvent = _reflection.GeneratedProtocolMessageType(
-    "AnalyticsEvent",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _ANALYTICSEVENT,
-        "__module__": "livekit_analytics_pb2"
-        # @@protoc_insertion_point(class_scope:livekit.AnalyticsEvent)
-    },
-)
-_sym_db.RegisterMessage(AnalyticsEvent)
-
-AnalyticsEvents = _reflection.GeneratedProtocolMessageType(
-    "AnalyticsEvents",
-    (_message.Message,),
-    {
-        "DESCRIPTOR": _ANALYTICSEVENTS,
-        "__module__": "livekit_analytics_pb2"
-        # @@protoc_insertion_point(class_scope:livekit.AnalyticsEvents)
-    },
-)
-_sym_db.RegisterMessage(AnalyticsEvents)
-
-_ANALYTICSRECORDERSERVICE = DESCRIPTOR.services_by_name["AnalyticsRecorderService"]
+_builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, "livekit_analytics_pb2", globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
     DESCRIPTOR._options = None
     DESCRIPTOR._serialized_options = b"Z#github.com/livekit/protocol/livekit\252\002\rLiveKit.Proto\352\002\016LiveKit::Proto"
-    _STREAMTYPE._serialized_start = 1547
-    _STREAMTYPE._serialized_end = 1589
-    _ANALYTICSEVENTTYPE._serialized_start = 1592
-    _ANALYTICSEVENTTYPE._serialized_end = 1878
+    _STREAMTYPE._serialized_start = 1588
+    _STREAMTYPE._serialized_end = 1630
+    _ANALYTICSEVENTTYPE._serialized_start = 1633
+    _ANALYTICSEVENTTYPE._serialized_end = 1997
     _ANALYTICSVIDEOLAYER._serialized_start = 120
-    _ANALYTICSVIDEOLAYER._serialized_end = 222
-    _ANALYTICSSTREAM._serialized_start = 225
-    _ANALYTICSSTREAM._serialized_end = 634
-    _ANALYTICSSTAT._serialized_start = 637
-    _ANALYTICSSTAT._serialized_end = 908
-    _ANALYTICSSTATS._serialized_start = 910
-    _ANALYTICSSTATS._serialized_end = 965
-    _ANALYTICSCLIENTMETA._serialized_start = 967
-    _ANALYTICSCLIENTMETA._serialized_end = 1068
-    _ANALYTICSEVENT._serialized_start = 1071
-    _ANALYTICSEVENT._serialized_end = 1485
-    _ANALYTICSEVENTS._serialized_start = 1487
-    _ANALYTICSEVENTS._serialized_end = 1545
-    _ANALYTICSRECORDERSERVICE._serialized_start = 1881
-    _ANALYTICSRECORDERSERVICE._serialized_end = 2045
+    _ANALYTICSVIDEOLAYER._serialized_end = 204
+    _ANALYTICSSTREAM._serialized_start = 207
+    _ANALYTICSSTREAM._serialized_end = 550
+    _ANALYTICSSTAT._serialized_start = 553
+    _ANALYTICSSTAT._serialized_end = 824
+    _ANALYTICSSTATS._serialized_start = 826
+    _ANALYTICSSTATS._serialized_end = 881
+    _ANALYTICSCLIENTMETA._serialized_start = 883
+    _ANALYTICSCLIENTMETA._serialized_end = 984
+    _ANALYTICSEVENT._serialized_start = 987
+    _ANALYTICSEVENT._serialized_end = 1526
+    _ANALYTICSEVENTS._serialized_start = 1528
+    _ANALYTICSEVENTS._serialized_end = 1586
+    _ANALYTICSRECORDERSERVICE._serialized_start = 2000
+    _ANALYTICSRECORDERSERVICE._serialized_end = 2164
 # @@protoc_insertion_point(module_scope)
