@@ -36,8 +36,17 @@ client.mute_published_track(room="<room name>", track="<track sid>")
 - protoc-gen-twirpy
     - `go install github.com/verloop/twirpy/protoc-gen-twirpy@latest`
     - make sure `~/go/bin` is in your `$PATH`
+- [pre-commit](https://pre-commit.com/)
 
-### Environment Setup:
+### Environment Setup
+
+Please make sure you have installed [pre-commit](https://pre-commit.com/), and install the hooks:
+
+```sh
+$ pre-commit install
+```
+
+Set up the python virtual environment:
 
 ```sh
 $ python3 -m venv env
@@ -45,7 +54,7 @@ $ source env/bin/activate
 $ pip install --editable '.[dev]'
 ```
 
-### Run tests:
+### Run tests
 
 The `RoomServiceClient` tests require a running LiveKit server.
 See the [LiveKit Getting Started](https://docs.livekit.io/guides/getting-started/) page.
