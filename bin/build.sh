@@ -49,6 +49,8 @@ mkdir -p "$PYTHON_OUT_DIR" "$TWIRP_OUT_DIR"
 
 log_info "Building proto files"
 protoc -I "$PROTO_DIR" --python_out="$PYTHON_OUT_DIR" --twirpy_out="$TWIRP_OUT_DIR" "$PROTO_DIR"/*.proto
+touch -a "$PYTHON_OUT_DIR/__init__.py"
+touch -a "$TWIRP_OUT_DIR/__init__.py"
 
 log_info "Fixing import lines"
 for f in "$PYTHON_OUT_DIR"/*.py; do
