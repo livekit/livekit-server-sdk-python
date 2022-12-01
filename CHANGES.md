@@ -7,6 +7,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Added `name` argument to `AccessToken`. This is assigned by LiveKit to the `name` of the `ParticipantInfo` object.
+  (See [#1](https://github.com/tradablebits/livekit-server-sdk-python/issues/1))
+
 ### Changed
 
 - Updated LiveKit protocol to v1.2.3

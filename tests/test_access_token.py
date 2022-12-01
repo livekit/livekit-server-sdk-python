@@ -15,14 +15,18 @@ def test_access_token_jwt_with_identity():
     api_key = "key"
     api_secret = "secret"
     grant = VideoGrant()
-    identity = "Bob"
-    access_token = AccessToken(api_key, api_secret, grant=grant, identity=identity)
+    identity = "bob"
+    name = "Bob"
+    access_token = AccessToken(
+        api_key, api_secret, grant=grant, name=name, identity=identity
+    )
     token = access_token.to_jwt()
     decoded = jwt.decode(token, key=api_secret, algorithms=["HS256"])
     assert decoded["video"] == {}
     assert decoded["iss"] == api_key
     assert decoded["nbf"] < decoded["exp"]
     assert decoded["sub"] == identity
+    assert decoded["name"] == name
 
 
 def test_access_token_with_metadata():

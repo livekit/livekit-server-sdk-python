@@ -83,6 +83,7 @@ class AccessToken:
     api_secret: str
     grant: VideoGrant = field(default_factory=VideoGrant)
     identity: Optional[str] = None
+    name: Optional[str] = None
     ttl: timedelta = DEFAULT_TOKEN_TTL
     metadata: Optional[str] = None
 
@@ -103,6 +104,8 @@ class AccessToken:
             payload["metadata"] = self.metadata
         if self.identity is not None:
             payload["sub"] = self.identity
+        if self.name:
+            payload["name"] = self.name
         return jwt.encode(payload, self.api_secret)
 
 

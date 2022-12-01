@@ -12,7 +12,7 @@ API Reference: https://docs.livekit.io/guides/server-api
 from livekit import AccessToken, VideoGrant
 
 grant = VideoGrant(room_join=True, room="My Cool Room")
-access_token = AccessToken("<api key>", "<api secret>", grant=grant, identity="Bob")
+access_token = AccessToken("<api key>", "<api secret>", grant=grant, identity="bob", name="Bob")
 token = access_token.to_jwt()
 ```
 
