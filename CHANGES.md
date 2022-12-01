@@ -16,6 +16,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Updated LiveKit protocol to v1.2.3
 
+### Meta
+
+- Use a git submodule for `protocol` to pin a specific LiveKit protocol release.
+
 ## [0.3.2] - 2022-05-27
 
 ### Fixed

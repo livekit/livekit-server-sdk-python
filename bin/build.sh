@@ -32,18 +32,8 @@ if [ -d "$TWIRP_OUT_DIR" ]; then
   rm -rf "$TWIRP_OUT_DIR"
 fi
 
-if [ ! -d "$PROTO_DIR" ]; then
-  log_info "Cloning protocols"
-	git clone https://github.com/livekit/protocol "$PROTO_DIR"
-fi
-
-log_info "Updating protocols"
-pushd "$PROTO_DIR" > /dev/null
-git fetch -q
-PROTO_VERSION="$( git tag | sort -V | tail -1 )"
-git checkout -q "$PROTO_VERSION"
-echo "protocol version: $PROTO_VERSION"
-popd > /dev/null
+PROTO_VERSION="$(git -C "$PROTO_DIR" describe --tags)"
+log_info "protocol version: $PROTO_VERSION"
 
 mkdir -p "$PYTHON_OUT_DIR" "$TWIRP_OUT_DIR"
 

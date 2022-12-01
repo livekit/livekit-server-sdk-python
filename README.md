@@ -27,6 +27,15 @@ client.mute_published_track(room="<room name>", track="<track sid>")
 
 ## Local Development
 
+Make sure you clone with submodules:
+```sh
+$ git clone --recurse-submodules https://github.com/tradablebits/livekit-server-sdk-python.git
+```
+Or if you have already cloned:
+```sh
+$ git submodule update --init
+```
+
 ### Dependencies
 
 - golang >= 1.17
