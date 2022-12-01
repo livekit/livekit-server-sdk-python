@@ -19,6 +19,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Meta
 
 - Use a git submodule for `protocol` to pin a specific LiveKit protocol release.
+- add `pre-commit` dev dependency
 
 ## [0.3.2] - 2022-05-27
 

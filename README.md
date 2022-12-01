@@ -49,18 +49,13 @@ $ git submodule update --init
 
 ### Environment Setup
 
-Please make sure you have installed [pre-commit](https://pre-commit.com/), and install the hooks:
-
-```sh
-$ pre-commit install
-```
-
 Set up the python virtual environment:
 
 ```sh
 $ python3 -m venv env
 $ source env/bin/activate
 $ pip install --editable '.[dev]'
+$ pre-commit install
 ```
 
 ### Run tests
