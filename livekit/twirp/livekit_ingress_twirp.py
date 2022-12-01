@@ -22,6 +22,13 @@ class IngressServer(TwirpServer):
                 input=_sym_db.GetSymbol("livekit.CreateIngressRequest"),
                 output=_sym_db.GetSymbol("livekit.IngressInfo"),
             ),
+            "UpdateIngress": Endpoint(
+                service_name="Ingress",
+                name="UpdateIngress",
+                function=getattr(service, "UpdateIngress"),
+                input=_sym_db.GetSymbol("livekit.UpdateIngressRequest"),
+                output=_sym_db.GetSymbol("livekit.IngressInfo"),
+            ),
             "ListIngress": Endpoint(
                 service_name="Ingress",
                 name="ListIngress",
@@ -34,7 +41,7 @@ class IngressServer(TwirpServer):
                 name="DeleteIngress",
                 function=getattr(service, "DeleteIngress"),
                 input=_sym_db.GetSymbol("livekit.DeleteIngressRequest"),
-                output=_sym_db.GetSymbol("google.protobuf.Empty"),
+                output=_sym_db.GetSymbol("livekit.IngressInfo"),
             ),
         }
 
@@ -43,6 +50,15 @@ class IngressClient(TwirpClient):
     def CreateIngress(self, *args, ctx, request, server_path_prefix="/twirp", **kwargs):
         return self._make_request(
             url=f"{server_path_prefix}/livekit.Ingress/CreateIngress",
+            ctx=ctx,
+            request=request,
+            response_obj=_sym_db.GetSymbol("livekit.IngressInfo"),
+            **kwargs,
+        )
+
+    def UpdateIngress(self, *args, ctx, request, server_path_prefix="/twirp", **kwargs):
+        return self._make_request(
+            url=f"{server_path_prefix}/livekit.Ingress/UpdateIngress",
             ctx=ctx,
             request=request,
             response_obj=_sym_db.GetSymbol("livekit.IngressInfo"),
@@ -63,6 +79,6 @@ class IngressClient(TwirpClient):
             url=f"{server_path_prefix}/livekit.Ingress/DeleteIngress",
             ctx=ctx,
             request=request,
-            response_obj=_sym_db.GetSymbol("google.protobuf.Empty"),
+            response_obj=_sym_db.GetSymbol("livekit.IngressInfo"),
             **kwargs,
         )

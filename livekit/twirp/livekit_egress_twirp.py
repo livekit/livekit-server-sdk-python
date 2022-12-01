@@ -36,6 +36,13 @@ class EgressServer(TwirpServer):
                 input=_sym_db.GetSymbol("livekit.TrackEgressRequest"),
                 output=_sym_db.GetSymbol("livekit.EgressInfo"),
             ),
+            "StartWebEgress": Endpoint(
+                service_name="Egress",
+                name="StartWebEgress",
+                function=getattr(service, "StartWebEgress"),
+                input=_sym_db.GetSymbol("livekit.WebEgressRequest"),
+                output=_sym_db.GetSymbol("livekit.EgressInfo"),
+            ),
             "UpdateLayout": Endpoint(
                 service_name="Egress",
                 name="UpdateLayout",
@@ -95,6 +102,17 @@ class EgressClient(TwirpClient):
     ):
         return self._make_request(
             url=f"{server_path_prefix}/livekit.Egress/StartTrackEgress",
+            ctx=ctx,
+            request=request,
+            response_obj=_sym_db.GetSymbol("livekit.EgressInfo"),
+            **kwargs,
+        )
+
+    def StartWebEgress(
+        self, *args, ctx, request, server_path_prefix="/twirp", **kwargs
+    ):
+        return self._make_request(
+            url=f"{server_path_prefix}/livekit.Egress/StartWebEgress",
             ctx=ctx,
             request=request,
             response_obj=_sym_db.GetSymbol("livekit.EgressInfo"),

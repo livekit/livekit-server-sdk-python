@@ -19,6 +19,7 @@ __all__ = [
     "TrackInfo",
     # room
     "CreateRoomRequest",
+    "RoomEgress",
     "DeleteRoomRequest",
     "DeleteRoomResponse",
     "ListParticipantsRequest",
@@ -35,9 +36,6 @@ __all__ = [
     "UpdateRoomMetadataRequest",
     "UpdateSubscriptionsRequest",
     "UpdateSubscriptionsResponse",
-    # recording
-    "RecordingServiceClient",
-    "RecordingServiceServer",
     # room service
     "RoomServiceClient",
     "RoomServiceServer",
@@ -59,7 +57,6 @@ from livekit.proto.livekit_analytics_pb2 import *
 from livekit.proto.livekit_models_pb2 import *
 from livekit.proto.livekit_room_pb2 import *
 from livekit.twirp.livekit_analytics_twirp import *
-from livekit.twirp.livekit_recording_twirp import *
 from livekit.twirp.livekit_room_twirp import RoomServiceClient as TwirpRoomServiceClient
 from livekit.twirp.livekit_room_twirp import RoomServiceServer
 
