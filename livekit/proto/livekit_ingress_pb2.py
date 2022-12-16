@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 from . import livekit_models_pb2 as livekit__models__pb2
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
-    b'\n\x15livekit_ingress.proto\x12\x07livekit\x1a\x14livekit_models.proto"\xf4\x01\n\x14\x43reateIngressRequest\x12)\n\ninput_type\x18\x01 \x01(\x0e\x32\x15.livekit.IngressInput\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x11\n\troom_name\x18\x03 \x01(\t\x12\x1c\n\x14participant_identity\x18\x04 \x01(\t\x12\x18\n\x10participant_name\x18\x05 \x01(\t\x12+\n\x05\x61udio\x18\x06 \x01(\x0b\x32\x1c.livekit.IngressAudioOptions\x12+\n\x05video\x18\x07 \x01(\x0b\x32\x1c.livekit.IngressVideoOptions"\x94\x01\n\x13IngressAudioOptions\x12\x0c\n\x04name\x18\x01 \x01(\t\x12$\n\x06source\x18\x02 \x01(\x0e\x32\x14.livekit.TrackSource\x12\x11\n\tmime_type\x18\x03 \x01(\t\x12\x0f\n\x07\x62itrate\x18\x04 \x01(\r\x12\x13\n\x0b\x64isable_dtx\x18\x05 \x01(\x08\x12\x10\n\x08\x63hannels\x18\x06 \x01(\r"\x81\x01\n\x13IngressVideoOptions\x12\x0c\n\x04name\x18\x01 \x01(\t\x12$\n\x06source\x18\x02 \x01(\x0e\x32\x14.livekit.TrackSource\x12\x11\n\tmime_type\x18\x03 \x01(\t\x12#\n\x06layers\x18\x04 \x03(\x0b\x32\x13.livekit.VideoLayer"\xd8\x02\n\x0bIngressInfo\x12\x12\n\ningress_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\nstream_key\x18\x03 \x01(\t\x12\x0b\n\x03url\x18\x04 \x01(\t\x12)\n\ninput_type\x18\x05 \x01(\x0e\x32\x15.livekit.IngressInput\x12+\n\x05\x61udio\x18\x06 \x01(\x0b\x32\x1c.livekit.IngressAudioOptions\x12+\n\x05video\x18\x07 \x01(\x0b\x32\x1c.livekit.IngressVideoOptions\x12\x11\n\troom_name\x18\x08 \x01(\t\x12\x1c\n\x14participant_identity\x18\t \x01(\t\x12\x18\n\x10participant_name\x18\n \x01(\t\x12\x10\n\x08reusable\x18\x0b \x01(\x08\x12$\n\x05state\x18\x0c \x01(\x0b\x32\x15.livekit.IngressState"\xcc\x02\n\x0cIngressState\x12,\n\x06status\x18\x01 \x01(\x0e\x32\x1c.livekit.IngressState.Status\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12\'\n\x05video\x18\x03 \x01(\x0b\x32\x18.livekit.InputVideoState\x12\'\n\x05\x61udio\x18\x04 \x01(\x0b\x32\x18.livekit.InputAudioState\x12\x0f\n\x07room_id\x18\x05 \x01(\t\x12\x12\n\nstarted_at\x18\x07 \x01(\x03\x12"\n\x06tracks\x18\x06 \x03(\x0b\x32\x12.livekit.TrackInfo"d\n\x06Status\x12\x15\n\x11\x45NDPOINT_INACTIVE\x10\x00\x12\x16\n\x12\x45NDPOINT_BUFFERING\x10\x01\x12\x17\n\x13\x45NDPOINT_PUBLISHING\x10\x02\x12\x12\n\x0e\x45NDPOINT_ERROR\x10\x03"V\n\x0fInputVideoState\x12\x11\n\tmime_type\x18\x01 \x01(\r\x12\r\n\x05width\x18\x03 \x01(\r\x12\x0e\n\x06height\x18\x04 \x01(\r\x12\x11\n\tframerate\x18\x05 \x01(\r"K\n\x0fInputAudioState\x12\x11\n\tmime_type\x18\x01 \x01(\r\x12\x10\n\x08\x63hannels\x18\x03 \x01(\r\x12\x13\n\x0bsample_rate\x18\x04 \x01(\r"\xdd\x01\n\x14UpdateIngressRequest\x12\x12\n\ningress_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x11\n\troom_name\x18\x03 \x01(\t\x12\x1c\n\x14participant_identity\x18\x04 \x01(\t\x12\x18\n\x10participant_name\x18\x05 \x01(\t\x12+\n\x05\x61udio\x18\x06 \x01(\x0b\x32\x1c.livekit.IngressAudioOptions\x12+\n\x05video\x18\x07 \x01(\x0b\x32\x1c.livekit.IngressVideoOptions"\'\n\x12ListIngressRequest\x12\x11\n\troom_name\x18\x01 \x01(\t":\n\x13ListIngressResponse\x12#\n\x05items\x18\x01 \x03(\x0b\x32\x14.livekit.IngressInfo"*\n\x14\x44\x65leteIngressRequest\x12\x12\n\ningress_id\x18\x01 \x01(\t*\x1e\n\x0cIngressInput\x12\x0e\n\nRTMP_INPUT\x10\x00\x32\xa5\x02\n\x07Ingress\x12\x44\n\rCreateIngress\x12\x1d.livekit.CreateIngressRequest\x1a\x14.livekit.IngressInfo\x12\x44\n\rUpdateIngress\x12\x1d.livekit.UpdateIngressRequest\x1a\x14.livekit.IngressInfo\x12H\n\x0bListIngress\x12\x1b.livekit.ListIngressRequest\x1a\x1c.livekit.ListIngressResponse\x12\x44\n\rDeleteIngress\x12\x1d.livekit.DeleteIngressRequest\x1a\x14.livekit.IngressInfoBFZ#github.com/livekit/protocol/livekit\xaa\x02\rLiveKit.Proto\xea\x02\x0eLiveKit::Protob\x06proto3'
+    b'\n\x15livekit_ingress.proto\x12\x07livekit\x1a\x14livekit_models.proto"\xf4\x01\n\x14\x43reateIngressRequest\x12)\n\ninput_type\x18\x01 \x01(\x0e\x32\x15.livekit.IngressInput\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x11\n\troom_name\x18\x03 \x01(\t\x12\x1c\n\x14participant_identity\x18\x04 \x01(\t\x12\x18\n\x10participant_name\x18\x05 \x01(\t\x12+\n\x05\x61udio\x18\x06 \x01(\x0b\x32\x1c.livekit.IngressAudioOptions\x12+\n\x05video\x18\x07 \x01(\x0b\x32\x1c.livekit.IngressVideoOptions"\x94\x01\n\x13IngressAudioOptions\x12\x0c\n\x04name\x18\x01 \x01(\t\x12$\n\x06source\x18\x02 \x01(\x0e\x32\x14.livekit.TrackSource\x12\x11\n\tmime_type\x18\x03 \x01(\t\x12\x0f\n\x07\x62itrate\x18\x04 \x01(\r\x12\x13\n\x0b\x64isable_dtx\x18\x05 \x01(\x08\x12\x10\n\x08\x63hannels\x18\x06 \x01(\r"\x81\x01\n\x13IngressVideoOptions\x12\x0c\n\x04name\x18\x01 \x01(\t\x12$\n\x06source\x18\x02 \x01(\x0e\x32\x14.livekit.TrackSource\x12\x11\n\tmime_type\x18\x03 \x01(\t\x12#\n\x06layers\x18\x04 \x03(\x0b\x32\x13.livekit.VideoLayer"\xd8\x02\n\x0bIngressInfo\x12\x12\n\ningress_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\nstream_key\x18\x03 \x01(\t\x12\x0b\n\x03url\x18\x04 \x01(\t\x12)\n\ninput_type\x18\x05 \x01(\x0e\x32\x15.livekit.IngressInput\x12+\n\x05\x61udio\x18\x06 \x01(\x0b\x32\x1c.livekit.IngressAudioOptions\x12+\n\x05video\x18\x07 \x01(\x0b\x32\x1c.livekit.IngressVideoOptions\x12\x11\n\troom_name\x18\x08 \x01(\t\x12\x1c\n\x14participant_identity\x18\t \x01(\t\x12\x18\n\x10participant_name\x18\n \x01(\t\x12\x10\n\x08reusable\x18\x0b \x01(\x08\x12$\n\x05state\x18\x0c \x01(\x0b\x32\x15.livekit.IngressState"\xde\x02\n\x0cIngressState\x12,\n\x06status\x18\x01 \x01(\x0e\x32\x1c.livekit.IngressState.Status\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12\'\n\x05video\x18\x03 \x01(\x0b\x32\x18.livekit.InputVideoState\x12\'\n\x05\x61udio\x18\x04 \x01(\x0b\x32\x18.livekit.InputAudioState\x12\x0f\n\x07room_id\x18\x05 \x01(\t\x12\x12\n\nstarted_at\x18\x07 \x01(\x03\x12\x10\n\x08\x65nded_at\x18\x08 \x01(\x03\x12"\n\x06tracks\x18\x06 \x03(\x0b\x32\x12.livekit.TrackInfo"d\n\x06Status\x12\x15\n\x11\x45NDPOINT_INACTIVE\x10\x00\x12\x16\n\x12\x45NDPOINT_BUFFERING\x10\x01\x12\x17\n\x13\x45NDPOINT_PUBLISHING\x10\x02\x12\x12\n\x0e\x45NDPOINT_ERROR\x10\x03"V\n\x0fInputVideoState\x12\x11\n\tmime_type\x18\x01 \x01(\r\x12\r\n\x05width\x18\x03 \x01(\r\x12\x0e\n\x06height\x18\x04 \x01(\r\x12\x11\n\tframerate\x18\x05 \x01(\r"K\n\x0fInputAudioState\x12\x11\n\tmime_type\x18\x01 \x01(\r\x12\x10\n\x08\x63hannels\x18\x03 \x01(\r\x12\x13\n\x0bsample_rate\x18\x04 \x01(\r"\xdd\x01\n\x14UpdateIngressRequest\x12\x12\n\ningress_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x11\n\troom_name\x18\x03 \x01(\t\x12\x1c\n\x14participant_identity\x18\x04 \x01(\t\x12\x18\n\x10participant_name\x18\x05 \x01(\t\x12+\n\x05\x61udio\x18\x06 \x01(\x0b\x32\x1c.livekit.IngressAudioOptions\x12+\n\x05video\x18\x07 \x01(\x0b\x32\x1c.livekit.IngressVideoOptions"\'\n\x12ListIngressRequest\x12\x11\n\troom_name\x18\x01 \x01(\t":\n\x13ListIngressResponse\x12#\n\x05items\x18\x01 \x03(\x0b\x32\x14.livekit.IngressInfo"*\n\x14\x44\x65leteIngressRequest\x12\x12\n\ningress_id\x18\x01 \x01(\t*\x1e\n\x0cIngressInput\x12\x0e\n\nRTMP_INPUT\x10\x00\x32\xa5\x02\n\x07Ingress\x12\x44\n\rCreateIngress\x12\x1d.livekit.CreateIngressRequest\x1a\x14.livekit.IngressInfo\x12\x44\n\rUpdateIngress\x12\x1d.livekit.UpdateIngressRequest\x1a\x14.livekit.IngressInfo\x12H\n\x0bListIngress\x12\x1b.livekit.ListIngressRequest\x1a\x1c.livekit.ListIngressResponse\x12\x44\n\rDeleteIngress\x12\x1d.livekit.DeleteIngressRequest\x1a\x14.livekit.IngressInfoBFZ#github.com/livekit/protocol/livekit\xaa\x02\rLiveKit.Proto\xea\x02\x0eLiveKit::Protob\x06proto3'
 )
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
@@ -24,8 +24,8 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
     DESCRIPTOR._options = None
     DESCRIPTOR._serialized_options = b"Z#github.com/livekit/protocol/livekit\252\002\rLiveKit.Proto\352\002\016LiveKit::Proto"
-    _INGRESSINPUT._serialized_start = 1802
-    _INGRESSINPUT._serialized_end = 1832
+    _INGRESSINPUT._serialized_start = 1820
+    _INGRESSINPUT._serialized_end = 1850
     _CREATEINGRESSREQUEST._serialized_start = 57
     _CREATEINGRESSREQUEST._serialized_end = 301
     _INGRESSAUDIOOPTIONS._serialized_start = 304
@@ -35,21 +35,21 @@ if _descriptor._USE_C_DESCRIPTORS == False:
     _INGRESSINFO._serialized_start = 587
     _INGRESSINFO._serialized_end = 931
     _INGRESSSTATE._serialized_start = 934
-    _INGRESSSTATE._serialized_end = 1266
-    _INGRESSSTATE_STATUS._serialized_start = 1166
-    _INGRESSSTATE_STATUS._serialized_end = 1266
-    _INPUTVIDEOSTATE._serialized_start = 1268
-    _INPUTVIDEOSTATE._serialized_end = 1354
-    _INPUTAUDIOSTATE._serialized_start = 1356
-    _INPUTAUDIOSTATE._serialized_end = 1431
-    _UPDATEINGRESSREQUEST._serialized_start = 1434
-    _UPDATEINGRESSREQUEST._serialized_end = 1655
-    _LISTINGRESSREQUEST._serialized_start = 1657
-    _LISTINGRESSREQUEST._serialized_end = 1696
-    _LISTINGRESSRESPONSE._serialized_start = 1698
-    _LISTINGRESSRESPONSE._serialized_end = 1756
-    _DELETEINGRESSREQUEST._serialized_start = 1758
-    _DELETEINGRESSREQUEST._serialized_end = 1800
-    _INGRESS._serialized_start = 1835
-    _INGRESS._serialized_end = 2128
+    _INGRESSSTATE._serialized_end = 1284
+    _INGRESSSTATE_STATUS._serialized_start = 1184
+    _INGRESSSTATE_STATUS._serialized_end = 1284
+    _INPUTVIDEOSTATE._serialized_start = 1286
+    _INPUTVIDEOSTATE._serialized_end = 1372
+    _INPUTAUDIOSTATE._serialized_start = 1374
+    _INPUTAUDIOSTATE._serialized_end = 1449
+    _UPDATEINGRESSREQUEST._serialized_start = 1452
+    _UPDATEINGRESSREQUEST._serialized_end = 1673
+    _LISTINGRESSREQUEST._serialized_start = 1675
+    _LISTINGRESSREQUEST._serialized_end = 1714
+    _LISTINGRESSRESPONSE._serialized_start = 1716
+    _LISTINGRESSRESPONSE._serialized_end = 1774
+    _DELETEINGRESSREQUEST._serialized_start = 1776
+    _DELETEINGRESSREQUEST._serialized_end = 1818
+    _INGRESS._serialized_start = 1853
+    _INGRESS._serialized_end = 2146
 # @@protoc_insertion_point(module_scope)

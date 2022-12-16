@@ -134,11 +134,21 @@ class IngressInfo(_message.Message):
     ) -> None: ...
 
 class IngressState(_message.Message):
-    __slots__ = ["audio", "error", "room_id", "started_at", "status", "tracks", "video"]
+    __slots__ = [
+        "audio",
+        "ended_at",
+        "error",
+        "room_id",
+        "started_at",
+        "status",
+        "tracks",
+        "video",
+    ]
 
     class Status(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = []
     AUDIO_FIELD_NUMBER: _ClassVar[int]
+    ENDED_AT_FIELD_NUMBER: _ClassVar[int]
     ENDPOINT_BUFFERING: IngressState.Status
     ENDPOINT_ERROR: IngressState.Status
     ENDPOINT_INACTIVE: IngressState.Status
@@ -150,6 +160,7 @@ class IngressState(_message.Message):
     TRACKS_FIELD_NUMBER: _ClassVar[int]
     VIDEO_FIELD_NUMBER: _ClassVar[int]
     audio: InputAudioState
+    ended_at: int
     error: str
     room_id: str
     started_at: int
@@ -164,6 +175,7 @@ class IngressState(_message.Message):
         audio: _Optional[_Union[InputAudioState, _Mapping]] = ...,
         room_id: _Optional[str] = ...,
         started_at: _Optional[int] = ...,
+        ended_at: _Optional[int] = ...,
         tracks: _Optional[
             _Iterable[_Union[_livekit_models_pb2.TrackInfo, _Mapping]]
         ] = ...,
