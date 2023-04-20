@@ -24,6 +24,7 @@ class AddTrackRequest(_message.Message):
         "cid",
         "disable_dtx",
         "disable_red",
+        "encryption",
         "height",
         "layers",
         "muted",
@@ -38,6 +39,7 @@ class AddTrackRequest(_message.Message):
     CID_FIELD_NUMBER: _ClassVar[int]
     DISABLE_DTX_FIELD_NUMBER: _ClassVar[int]
     DISABLE_RED_FIELD_NUMBER: _ClassVar[int]
+    ENCRYPTION_FIELD_NUMBER: _ClassVar[int]
     HEIGHT_FIELD_NUMBER: _ClassVar[int]
     LAYERS_FIELD_NUMBER: _ClassVar[int]
     MUTED_FIELD_NUMBER: _ClassVar[int]
@@ -51,6 +53,7 @@ class AddTrackRequest(_message.Message):
     cid: str
     disable_dtx: bool
     disable_red: bool
+    encryption: _livekit_models_pb2.Encryption.Type
     height: int
     layers: _containers.RepeatedCompositeFieldContainer[_livekit_models_pb2.VideoLayer]
     muted: bool
@@ -78,6 +81,7 @@ class AddTrackRequest(_message.Message):
         sid: _Optional[str] = ...,
         stereo: bool = ...,
         disable_red: bool = ...,
+        encryption: _Optional[_Union[_livekit_models_pb2.Encryption.Type, str]] = ...,
     ) -> None: ...
 
 class ConnectionQualityInfo(_message.Message):
@@ -230,6 +234,63 @@ class ParticipantUpdate(_message.Message):
         ] = ...,
     ) -> None: ...
 
+class Ping(_message.Message):
+    __slots__ = ["rtt", "timestamp"]
+    RTT_FIELD_NUMBER: _ClassVar[int]
+    TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
+    rtt: int
+    timestamp: int
+    def __init__(
+        self, timestamp: _Optional[int] = ..., rtt: _Optional[int] = ...
+    ) -> None: ...
+
+class Pong(_message.Message):
+    __slots__ = ["last_ping_timestamp", "timestamp"]
+    LAST_PING_TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
+    TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
+    last_ping_timestamp: int
+    timestamp: int
+    def __init__(
+        self, last_ping_timestamp: _Optional[int] = ..., timestamp: _Optional[int] = ...
+    ) -> None: ...
+
+class ReconnectResponse(_message.Message):
+    __slots__ = ["client_configuration", "ice_servers"]
+    CLIENT_CONFIGURATION_FIELD_NUMBER: _ClassVar[int]
+    ICE_SERVERS_FIELD_NUMBER: _ClassVar[int]
+    client_configuration: _livekit_models_pb2.ClientConfiguration
+    ice_servers: _containers.RepeatedCompositeFieldContainer[ICEServer]
+    def __init__(
+        self,
+        ice_servers: _Optional[_Iterable[_Union[ICEServer, _Mapping]]] = ...,
+        client_configuration: _Optional[
+            _Union[_livekit_models_pb2.ClientConfiguration, _Mapping]
+        ] = ...,
+    ) -> None: ...
+
+class RegionInfo(_message.Message):
+    __slots__ = ["distance", "region", "url"]
+    DISTANCE_FIELD_NUMBER: _ClassVar[int]
+    REGION_FIELD_NUMBER: _ClassVar[int]
+    URL_FIELD_NUMBER: _ClassVar[int]
+    distance: int
+    region: str
+    url: str
+    def __init__(
+        self,
+        region: _Optional[str] = ...,
+        url: _Optional[str] = ...,
+        distance: _Optional[int] = ...,
+    ) -> None: ...
+
+class RegionSettings(_message.Message):
+    __slots__ = ["regions"]
+    REGIONS_FIELD_NUMBER: _ClassVar[int]
+    regions: _containers.RepeatedCompositeFieldContainer[RegionInfo]
+    def __init__(
+        self, regions: _Optional[_Iterable[_Union[RegionInfo, _Mapping]]] = ...
+    ) -> None: ...
+
 class RoomUpdate(_message.Message):
     __slots__ = ["room"]
     ROOM_FIELD_NUMBER: _ClassVar[int]
@@ -256,6 +317,7 @@ class SignalRequest(_message.Message):
         "mute",
         "offer",
         "ping",
+        "ping_req",
         "simulate",
         "subscription",
         "subscription_permission",
@@ -263,6 +325,7 @@ class SignalRequest(_message.Message):
         "track_setting",
         "trickle",
         "update_layers",
+        "update_metadata",
     ]
     ADD_TRACK_FIELD_NUMBER: _ClassVar[int]
     ANSWER_FIELD_NUMBER: _ClassVar[int]
@@ -270,6 +333,7 @@ class SignalRequest(_message.Message):
     MUTE_FIELD_NUMBER: _ClassVar[int]
     OFFER_FIELD_NUMBER: _ClassVar[int]
     PING_FIELD_NUMBER: _ClassVar[int]
+    PING_REQ_FIELD_NUMBER: _ClassVar[int]
     SIMULATE_FIELD_NUMBER: _ClassVar[int]
     SUBSCRIPTION_FIELD_NUMBER: _ClassVar[int]
     SUBSCRIPTION_PERMISSION_FIELD_NUMBER: _ClassVar[int]
@@ -277,12 +341,14 @@ class SignalRequest(_message.Message):
     TRACK_SETTING_FIELD_NUMBER: _ClassVar[int]
     TRICKLE_FIELD_NUMBER: _ClassVar[int]
     UPDATE_LAYERS_FIELD_NUMBER: _ClassVar[int]
+    UPDATE_METADATA_FIELD_NUMBER: _ClassVar[int]
     add_track: AddTrackRequest
     answer: SessionDescription
     leave: LeaveRequest
     mute: MuteTrackRequest
     offer: SessionDescription
     ping: int
+    ping_req: Ping
     simulate: SimulateScenario
     subscription: UpdateSubscription
     subscription_permission: SubscriptionPermission
@@ -290,6 +356,7 @@ class SignalRequest(_message.Message):
     track_setting: UpdateTrackSettings
     trickle: TrickleRequest
     update_layers: UpdateVideoLayers
+    update_metadata: UpdateParticipantMetadata
     def __init__(
         self,
         offer: _Optional[_Union[SessionDescription, _Mapping]] = ...,
@@ -307,6 +374,8 @@ class SignalRequest(_message.Message):
         sync_state: _Optional[_Union[SyncState, _Mapping]] = ...,
         simulate: _Optional[_Union[SimulateScenario, _Mapping]] = ...,
         ping: _Optional[int] = ...,
+        update_metadata: _Optional[_Union[UpdateParticipantMetadata, _Mapping]] = ...,
+        ping_req: _Optional[_Union[Ping, _Mapping]] = ...,
     ) -> None: ...
 
 class SignalResponse(_message.Message):
@@ -318,6 +387,8 @@ class SignalResponse(_message.Message):
         "mute",
         "offer",
         "pong",
+        "pong_resp",
+        "reconnect",
         "refresh_token",
         "room_update",
         "speakers_changed",
@@ -336,6 +407,8 @@ class SignalResponse(_message.Message):
     MUTE_FIELD_NUMBER: _ClassVar[int]
     OFFER_FIELD_NUMBER: _ClassVar[int]
     PONG_FIELD_NUMBER: _ClassVar[int]
+    PONG_RESP_FIELD_NUMBER: _ClassVar[int]
+    RECONNECT_FIELD_NUMBER: _ClassVar[int]
     REFRESH_TOKEN_FIELD_NUMBER: _ClassVar[int]
     ROOM_UPDATE_FIELD_NUMBER: _ClassVar[int]
     SPEAKERS_CHANGED_FIELD_NUMBER: _ClassVar[int]
@@ -353,6 +426,8 @@ class SignalResponse(_message.Message):
     mute: MuteTrackRequest
     offer: SessionDescription
     pong: int
+    pong_resp: Pong
+    reconnect: ReconnectResponse
     refresh_token: str
     room_update: RoomUpdate
     speakers_changed: SpeakersChanged
@@ -386,6 +461,8 @@ class SignalResponse(_message.Message):
         refresh_token: _Optional[str] = ...,
         track_unpublished: _Optional[_Union[TrackUnpublishedResponse, _Mapping]] = ...,
         pong: _Optional[int] = ...,
+        reconnect: _Optional[_Union[ReconnectResponse, _Mapping]] = ...,
+        pong_resp: _Optional[_Union[Pong, _Mapping]] = ...,
     ) -> None: ...
 
 class SimulateScenario(_message.Message):
@@ -394,17 +471,20 @@ class SimulateScenario(_message.Message):
         "node_failure",
         "server_leave",
         "speaker_update",
+        "subscriber_bandwidth",
         "switch_candidate_protocol",
     ]
     MIGRATION_FIELD_NUMBER: _ClassVar[int]
     NODE_FAILURE_FIELD_NUMBER: _ClassVar[int]
     SERVER_LEAVE_FIELD_NUMBER: _ClassVar[int]
     SPEAKER_UPDATE_FIELD_NUMBER: _ClassVar[int]
+    SUBSCRIBER_BANDWIDTH_FIELD_NUMBER: _ClassVar[int]
     SWITCH_CANDIDATE_PROTOCOL_FIELD_NUMBER: _ClassVar[int]
     migration: bool
     node_failure: bool
     server_leave: bool
     speaker_update: int
+    subscriber_bandwidth: int
     switch_candidate_protocol: CandidateProtocol
     def __init__(
         self,
@@ -413,6 +493,7 @@ class SimulateScenario(_message.Message):
         migration: bool = ...,
         server_leave: bool = ...,
         switch_candidate_protocol: _Optional[_Union[CandidateProtocol, str]] = ...,
+        subscriber_bandwidth: _Optional[int] = ...,
     ) -> None: ...
 
 class SimulcastCodec(_message.Message):
@@ -610,6 +691,16 @@ class TrickleRequest(_message.Message):
         target: _Optional[_Union[SignalTarget, str]] = ...,
     ) -> None: ...
 
+class UpdateParticipantMetadata(_message.Message):
+    __slots__ = ["metadata", "name"]
+    METADATA_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    metadata: str
+    name: str
+    def __init__(
+        self, metadata: _Optional[str] = ..., name: _Optional[str] = ...
+    ) -> None: ...
+
 class UpdateSubscription(_message.Message):
     __slots__ = ["participant_tracks", "subscribe", "track_sids"]
     PARTICIPANT_TRACKS_FIELD_NUMBER: _ClassVar[int]
@@ -630,16 +721,26 @@ class UpdateSubscription(_message.Message):
     ) -> None: ...
 
 class UpdateTrackSettings(_message.Message):
-    __slots__ = ["disabled", "fps", "height", "quality", "track_sids", "width"]
+    __slots__ = [
+        "disabled",
+        "fps",
+        "height",
+        "priority",
+        "quality",
+        "track_sids",
+        "width",
+    ]
     DISABLED_FIELD_NUMBER: _ClassVar[int]
     FPS_FIELD_NUMBER: _ClassVar[int]
     HEIGHT_FIELD_NUMBER: _ClassVar[int]
+    PRIORITY_FIELD_NUMBER: _ClassVar[int]
     QUALITY_FIELD_NUMBER: _ClassVar[int]
     TRACK_SIDS_FIELD_NUMBER: _ClassVar[int]
     WIDTH_FIELD_NUMBER: _ClassVar[int]
     disabled: bool
     fps: int
     height: int
+    priority: int
     quality: _livekit_models_pb2.VideoQuality
     track_sids: _containers.RepeatedScalarFieldContainer[str]
     width: int
@@ -651,6 +752,7 @@ class UpdateTrackSettings(_message.Message):
         width: _Optional[int] = ...,
         height: _Optional[int] = ...,
         fps: _Optional[int] = ...,
+        priority: _Optional[int] = ...,
     ) -> None: ...
 
 class UpdateVideoLayers(_message.Message):

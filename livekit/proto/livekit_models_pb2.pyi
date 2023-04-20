@@ -10,25 +10,37 @@ from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 
+AAC: AudioCodec
 AUDIO: TrackType
 CAMERA: TrackSource
 CLIENT_INITIATED: DisconnectReason
 DATA: TrackType
+DEFAULT_AC: AudioCodec
+DEFAULT_VC: VideoCodec
 DESCRIPTOR: _descriptor.FileDescriptor
 DISABLED: ClientConfigSetting
 DUPLICATE_IDENTITY: DisconnectReason
 ENABLED: ClientConfigSetting
 EXCELLENT: ConnectionQuality
 GOOD: ConnectionQuality
+H264_BASELINE: VideoCodec
+H264_HIGH: VideoCodec
+H264_MAIN: VideoCodec
 HIGH: VideoQuality
 JOIN_FAILURE: DisconnectReason
 LOW: VideoQuality
 MEDIUM: VideoQuality
 MICROPHONE: TrackSource
 OFF: VideoQuality
+OPUS: AudioCodec
 PARTICIPANT_REMOVED: DisconnectReason
 POOR: ConnectionQuality
 ROOM_DELETED: DisconnectReason
+RR_PUBLISHER_FAILED: ReconnectReason
+RR_SIGNAL_DISCONNECTED: ReconnectReason
+RR_SUBSCRIBER_FAILED: ReconnectReason
+RR_SWITCH_CANDIDATE: ReconnectReason
+RR_UNKOWN: ReconnectReason
 SCREEN_SHARE: TrackSource
 SCREEN_SHARE_AUDIO: TrackSource
 SERVER_SHUTDOWN: DisconnectReason
@@ -37,6 +49,7 @@ UNKNOWN: TrackSource
 UNKNOWN_REASON: DisconnectReason
 UNSET: ClientConfigSetting
 VIDEO: TrackType
+VP8: VideoCodec
 
 class ActiveSpeakerUpdate(_message.Message):
     __slots__ = ["speakers"]
@@ -101,6 +114,8 @@ class ClientInfo(_message.Message):
     OS_FIELD_NUMBER: _ClassVar[int]
     OS_VERSION_FIELD_NUMBER: _ClassVar[int]
     PROTOCOL_FIELD_NUMBER: _ClassVar[int]
+    REACT_NATIVE: ClientInfo.SDK
+    RUST: ClientInfo.SDK
     SDK_FIELD_NUMBER: _ClassVar[int]
     SWIFT: ClientInfo.SDK
     UNITY: ClientInfo.SDK
@@ -168,6 +183,16 @@ class DisabledCodecs(_message.Message):
         self, codecs: _Optional[_Iterable[_Union[Codec, _Mapping]]] = ...
     ) -> None: ...
 
+class Encryption(_message.Message):
+    __slots__ = []
+
+    class Type(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+        __slots__ = []
+    CUSTOM: Encryption.Type
+    GCM: Encryption.Type
+    NONE: Encryption.Type
+    def __init__(self) -> None: ...
+
 class ParticipantInfo(_message.Message):
     __slots__ = [
         "identity",
@@ -230,18 +255,24 @@ class ParticipantPermission(_message.Message):
     __slots__ = [
         "can_publish",
         "can_publish_data",
+        "can_publish_sources",
         "can_subscribe",
+        "can_update_metadata",
         "hidden",
         "recorder",
     ]
     CAN_PUBLISH_DATA_FIELD_NUMBER: _ClassVar[int]
     CAN_PUBLISH_FIELD_NUMBER: _ClassVar[int]
+    CAN_PUBLISH_SOURCES_FIELD_NUMBER: _ClassVar[int]
     CAN_SUBSCRIBE_FIELD_NUMBER: _ClassVar[int]
+    CAN_UPDATE_METADATA_FIELD_NUMBER: _ClassVar[int]
     HIDDEN_FIELD_NUMBER: _ClassVar[int]
     RECORDER_FIELD_NUMBER: _ClassVar[int]
     can_publish: bool
     can_publish_data: bool
+    can_publish_sources: _containers.RepeatedScalarFieldContainer[TrackSource]
     can_subscribe: bool
+    can_update_metadata: bool
     hidden: bool
     recorder: bool
     def __init__(
@@ -249,8 +280,10 @@ class ParticipantPermission(_message.Message):
         can_subscribe: bool = ...,
         can_publish: bool = ...,
         can_publish_data: bool = ...,
+        can_publish_sources: _Optional[_Iterable[_Union[TrackSource, str]]] = ...,
         hidden: bool = ...,
         recorder: bool = ...,
+        can_update_metadata: bool = ...,
     ) -> None: ...
 
 class ParticipantTracks(_message.Message):
@@ -572,6 +605,7 @@ class TrackInfo(_message.Message):
         "codecs",
         "disable_dtx",
         "disable_red",
+        "encryption",
         "height",
         "layers",
         "mid",
@@ -588,6 +622,7 @@ class TrackInfo(_message.Message):
     CODECS_FIELD_NUMBER: _ClassVar[int]
     DISABLE_DTX_FIELD_NUMBER: _ClassVar[int]
     DISABLE_RED_FIELD_NUMBER: _ClassVar[int]
+    ENCRYPTION_FIELD_NUMBER: _ClassVar[int]
     HEIGHT_FIELD_NUMBER: _ClassVar[int]
     LAYERS_FIELD_NUMBER: _ClassVar[int]
     MID_FIELD_NUMBER: _ClassVar[int]
@@ -603,6 +638,7 @@ class TrackInfo(_message.Message):
     codecs: _containers.RepeatedCompositeFieldContainer[SimulcastCodecInfo]
     disable_dtx: bool
     disable_red: bool
+    encryption: Encryption.Type
     height: int
     layers: _containers.RepeatedCompositeFieldContainer[VideoLayer]
     mid: str
@@ -632,21 +668,25 @@ class TrackInfo(_message.Message):
         codecs: _Optional[_Iterable[_Union[SimulcastCodecInfo, _Mapping]]] = ...,
         stereo: bool = ...,
         disable_red: bool = ...,
+        encryption: _Optional[_Union[Encryption.Type, str]] = ...,
     ) -> None: ...
 
 class UserPacket(_message.Message):
-    __slots__ = ["destination_sids", "participant_sid", "payload"]
+    __slots__ = ["destination_sids", "participant_sid", "payload", "topic"]
     DESTINATION_SIDS_FIELD_NUMBER: _ClassVar[int]
     PARTICIPANT_SID_FIELD_NUMBER: _ClassVar[int]
     PAYLOAD_FIELD_NUMBER: _ClassVar[int]
+    TOPIC_FIELD_NUMBER: _ClassVar[int]
     destination_sids: _containers.RepeatedScalarFieldContainer[str]
     participant_sid: str
     payload: bytes
+    topic: str
     def __init__(
         self,
         participant_sid: _Optional[str] = ...,
         payload: _Optional[bytes] = ...,
         destination_sids: _Optional[_Iterable[str]] = ...,
+        topic: _Optional[str] = ...,
     ) -> None: ...
 
 class VideoConfiguration(_message.Message):
@@ -678,6 +718,12 @@ class VideoLayer(_message.Message):
         ssrc: _Optional[int] = ...,
     ) -> None: ...
 
+class AudioCodec(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = []
+
+class VideoCodec(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = []
+
 class TrackType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = []
 
@@ -694,4 +740,7 @@ class ClientConfigSetting(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = []
 
 class DisconnectReason(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = []
+
+class ReconnectReason(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = []

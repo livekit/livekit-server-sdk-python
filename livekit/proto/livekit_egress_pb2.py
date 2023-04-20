@@ -12,84 +12,119 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
+from . import livekit_models_pb2 as livekit__models__pb2
+
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
-    b'\n\x14livekit_egress.proto\x12\x07livekit"\xfc\x02\n\x1aRoomCompositeEgressRequest\x12\x11\n\troom_name\x18\x01 \x01(\t\x12\x0e\n\x06layout\x18\x02 \x01(\t\x12\x12\n\naudio_only\x18\x03 \x01(\x08\x12\x12\n\nvideo_only\x18\x04 \x01(\x08\x12\x17\n\x0f\x63ustom_base_url\x18\x05 \x01(\t\x12*\n\x04\x66ile\x18\x06 \x01(\x0b\x32\x1a.livekit.EncodedFileOutputH\x00\x12\'\n\x06stream\x18\x07 \x01(\x0b\x32\x15.livekit.StreamOutputH\x00\x12\x30\n\x08segments\x18\n \x01(\x0b\x32\x1c.livekit.SegmentedFileOutputH\x00\x12\x30\n\x06preset\x18\x08 \x01(\x0e\x32\x1e.livekit.EncodingOptionsPresetH\x01\x12,\n\x08\x61\x64vanced\x18\t \x01(\x0b\x32\x18.livekit.EncodingOptionsH\x01\x42\x08\n\x06outputB\t\n\x07options"\xdc\x02\n\x1bTrackCompositeEgressRequest\x12\x11\n\troom_name\x18\x01 \x01(\t\x12\x16\n\x0e\x61udio_track_id\x18\x02 \x01(\t\x12\x16\n\x0evideo_track_id\x18\x03 \x01(\t\x12*\n\x04\x66ile\x18\x04 \x01(\x0b\x32\x1a.livekit.EncodedFileOutputH\x00\x12\'\n\x06stream\x18\x05 \x01(\x0b\x32\x15.livekit.StreamOutputH\x00\x12\x30\n\x08segments\x18\x08 \x01(\x0b\x32\x1c.livekit.SegmentedFileOutputH\x00\x12\x30\n\x06preset\x18\x06 \x01(\x0e\x32\x1e.livekit.EncodingOptionsPresetH\x01\x12,\n\x08\x61\x64vanced\x18\x07 \x01(\x0b\x32\x18.livekit.EncodingOptionsH\x01\x42\x08\n\x06outputB\t\n\x07options"\x87\x01\n\x12TrackEgressRequest\x12\x11\n\troom_name\x18\x01 \x01(\t\x12\x10\n\x08track_id\x18\x02 \x01(\t\x12)\n\x04\x66ile\x18\x03 \x01(\x0b\x32\x19.livekit.DirectFileOutputH\x00\x12\x17\n\rwebsocket_url\x18\x04 \x01(\tH\x00\x42\x08\n\x06output"\xc3\x02\n\x10WebEgressRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x12\n\naudio_only\x18\x02 \x01(\x08\x12\x12\n\nvideo_only\x18\x03 \x01(\x08\x12*\n\x04\x66ile\x18\x04 \x01(\x0b\x32\x1a.livekit.EncodedFileOutputH\x00\x12\'\n\x06stream\x18\x05 \x01(\x0b\x32\x15.livekit.StreamOutputH\x00\x12\x30\n\x08segments\x18\x06 \x01(\x0b\x32\x1c.livekit.SegmentedFileOutputH\x00\x12\x30\n\x06preset\x18\x07 \x01(\x0e\x32\x1e.livekit.EncodingOptionsPresetH\x01\x12,\n\x08\x61\x64vanced\x18\x08 \x01(\x0b\x32\x18.livekit.EncodingOptionsH\x01\x42\x08\n\x06outputB\t\n\x07options"\x8e\x02\n\x11\x45ncodedFileOutput\x12+\n\tfile_type\x18\x01 \x01(\x0e\x32\x18.livekit.EncodedFileType\x12\x10\n\x08\x66ilepath\x18\x02 \x01(\t\x12\x18\n\x10\x64isable_manifest\x18\x06 \x01(\x08\x12\x1f\n\x02s3\x18\x03 \x01(\x0b\x32\x11.livekit.S3UploadH\x00\x12!\n\x03gcp\x18\x04 \x01(\x0b\x32\x12.livekit.GCPUploadH\x00\x12)\n\x05\x61zure\x18\x05 \x01(\x0b\x32\x18.livekit.AzureBlobUploadH\x00\x12\'\n\x06\x61liOSS\x18\x07 \x01(\x0b\x32\x15.livekit.AliOSSUploadH\x00\x42\x08\n\x06output"\xcd\x02\n\x13SegmentedFileOutput\x12\x30\n\x08protocol\x18\x01 \x01(\x0e\x32\x1e.livekit.SegmentedFileProtocol\x12\x17\n\x0f\x66ilename_prefix\x18\x02 \x01(\t\x12\x15\n\rplaylist_name\x18\x03 \x01(\t\x12\x18\n\x10segment_duration\x18\x04 \x01(\r\x12\x18\n\x10\x64isable_manifest\x18\x08 \x01(\x08\x12\x1f\n\x02s3\x18\x05 \x01(\x0b\x32\x11.livekit.S3UploadH\x00\x12!\n\x03gcp\x18\x06 \x01(\x0b\x32\x12.livekit.GCPUploadH\x00\x12)\n\x05\x61zure\x18\x07 \x01(\x0b\x32\x18.livekit.AzureBlobUploadH\x00\x12\'\n\x06\x61liOSS\x18\t \x01(\x0b\x32\x15.livekit.AliOSSUploadH\x00\x42\x08\n\x06output"\xe0\x01\n\x10\x44irectFileOutput\x12\x10\n\x08\x66ilepath\x18\x01 \x01(\t\x12\x18\n\x10\x64isable_manifest\x18\x05 \x01(\x08\x12\x1f\n\x02s3\x18\x02 \x01(\x0b\x32\x11.livekit.S3UploadH\x00\x12!\n\x03gcp\x18\x03 \x01(\x0b\x32\x12.livekit.GCPUploadH\x00\x12)\n\x05\x61zure\x18\x04 \x01(\x0b\x32\x18.livekit.AzureBlobUploadH\x00\x12\'\n\x06\x61liOSS\x18\x06 \x01(\x0b\x32\x15.livekit.AliOSSUploadH\x00\x42\x08\n\x06output"\xef\x01\n\x08S3Upload\x12\x12\n\naccess_key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x0e\n\x06region\x18\x03 \x01(\t\x12\x10\n\x08\x65ndpoint\x18\x04 \x01(\t\x12\x0e\n\x06\x62ucket\x18\x05 \x01(\t\x12\x18\n\x10\x66orce_path_style\x18\x06 \x01(\x08\x12\x31\n\x08metadata\x18\x07 \x03(\x0b\x32\x1f.livekit.S3Upload.MetadataEntry\x12\x0f\n\x07tagging\x18\x08 \x01(\t\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01"0\n\tGCPUpload\x12\x13\n\x0b\x63redentials\x18\x01 \x01(\x0c\x12\x0e\n\x06\x62ucket\x18\x02 \x01(\t"T\n\x0f\x41zureBlobUpload\x12\x14\n\x0c\x61\x63\x63ount_name\x18\x01 \x01(\t\x12\x13\n\x0b\x61\x63\x63ount_key\x18\x02 \x01(\t\x12\x16\n\x0e\x63ontainer_name\x18\x03 \x01(\t"d\n\x0c\x41liOSSUpload\x12\x12\n\naccess_key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x0e\n\x06region\x18\x03 \x01(\t\x12\x10\n\x08\x65ndpoint\x18\x04 \x01(\t\x12\x0e\n\x06\x62ucket\x18\x05 \x01(\t"G\n\x0cStreamOutput\x12)\n\x08protocol\x18\x01 \x01(\x0e\x32\x17.livekit.StreamProtocol\x12\x0c\n\x04urls\x18\x02 \x03(\t"\xed\x01\n\x0f\x45ncodingOptions\x12\r\n\x05width\x18\x01 \x01(\x05\x12\x0e\n\x06height\x18\x02 \x01(\x05\x12\r\n\x05\x64\x65pth\x18\x03 \x01(\x05\x12\x11\n\tframerate\x18\x04 \x01(\x05\x12(\n\x0b\x61udio_codec\x18\x05 \x01(\x0e\x32\x13.livekit.AudioCodec\x12\x15\n\raudio_bitrate\x18\x06 \x01(\x05\x12\x17\n\x0f\x61udio_frequency\x18\x07 \x01(\x05\x12(\n\x0bvideo_codec\x18\x08 \x01(\x0e\x32\x13.livekit.VideoCodec\x12\x15\n\rvideo_bitrate\x18\t \x01(\x05"8\n\x13UpdateLayoutRequest\x12\x11\n\tegress_id\x18\x01 \x01(\t\x12\x0e\n\x06layout\x18\x02 \x01(\t"]\n\x13UpdateStreamRequest\x12\x11\n\tegress_id\x18\x01 \x01(\t\x12\x17\n\x0f\x61\x64\x64_output_urls\x18\x02 \x03(\t\x12\x1a\n\x12remove_output_urls\x18\x03 \x03(\t"&\n\x11ListEgressRequest\x12\x11\n\troom_name\x18\x01 \x01(\t"8\n\x12ListEgressResponse\x12"\n\x05items\x18\x01 \x03(\x0b\x32\x13.livekit.EgressInfo"&\n\x11StopEgressRequest\x12\x11\n\tegress_id\x18\x01 \x01(\t"\x85\x04\n\nEgressInfo\x12\x11\n\tegress_id\x18\x01 \x01(\t\x12\x0f\n\x07room_id\x18\x02 \x01(\t\x12\x11\n\troom_name\x18\r \x01(\t\x12%\n\x06status\x18\x03 \x01(\x0e\x32\x15.livekit.EgressStatus\x12\x12\n\nstarted_at\x18\n \x01(\x03\x12\x10\n\x08\x65nded_at\x18\x0b \x01(\x03\x12\r\n\x05\x65rror\x18\t \x01(\t\x12=\n\x0eroom_composite\x18\x04 \x01(\x0b\x32#.livekit.RoomCompositeEgressRequestH\x00\x12?\n\x0ftrack_composite\x18\x05 \x01(\x0b\x32$.livekit.TrackCompositeEgressRequestH\x00\x12,\n\x05track\x18\x06 \x01(\x0b\x32\x1b.livekit.TrackEgressRequestH\x00\x12(\n\x03web\x18\x0e \x01(\x0b\x32\x19.livekit.WebEgressRequestH\x00\x12)\n\x06stream\x18\x07 \x01(\x0b\x32\x17.livekit.StreamInfoListH\x01\x12!\n\x04\x66ile\x18\x08 \x01(\x0b\x32\x11.livekit.FileInfoH\x01\x12)\n\x08segments\x18\x0c \x01(\x0b\x32\x15.livekit.SegmentsInfoH\x01\x42\t\n\x07requestB\x08\n\x06result"3\n\x0eStreamInfoList\x12!\n\x04info\x18\x01 \x03(\x0b\x32\x13.livekit.StreamInfo"\xad\x01\n\nStreamInfo\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x12\n\nstarted_at\x18\x02 \x01(\x03\x12\x10\n\x08\x65nded_at\x18\x03 \x01(\x03\x12\x10\n\x08\x64uration\x18\x04 \x01(\x03\x12*\n\x06status\x18\x05 \x01(\x0e\x32\x1a.livekit.StreamInfo.Status".\n\x06Status\x12\n\n\x06\x41\x43TIVE\x10\x00\x12\x0c\n\x08\x46INISHED\x10\x01\x12\n\n\x06\x46\x41ILED\x10\x02"t\n\x08\x46ileInfo\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x12\n\nstarted_at\x18\x02 \x01(\x03\x12\x10\n\x08\x65nded_at\x18\x03 \x01(\x03\x12\x10\n\x08\x64uration\x18\x06 \x01(\x03\x12\x0c\n\x04size\x18\x04 \x01(\x03\x12\x10\n\x08location\x18\x05 \x01(\t"\x9d\x01\n\x0cSegmentsInfo\x12\x15\n\rplaylist_name\x18\x01 \x01(\t\x12\x10\n\x08\x64uration\x18\x02 \x01(\x03\x12\x0c\n\x04size\x18\x03 \x01(\x03\x12\x19\n\x11playlist_location\x18\x04 \x01(\t\x12\x15\n\rsegment_count\x18\x05 \x01(\x03\x12\x12\n\nstarted_at\x18\x06 \x01(\x03\x12\x10\n\x08\x65nded_at\x18\x07 \x01(\x03"\xb6\x01\n\x0f\x41utoTrackEgress\x12\x10\n\x08\x66ilepath\x18\x01 \x01(\t\x12\x18\n\x10\x64isable_manifest\x18\x05 \x01(\x08\x12\x1f\n\x02s3\x18\x02 \x01(\x0b\x32\x11.livekit.S3UploadH\x00\x12!\n\x03gcp\x18\x03 \x01(\x0b\x32\x12.livekit.GCPUploadH\x00\x12)\n\x05\x61zure\x18\x04 \x01(\x0b\x32\x18.livekit.AzureBlobUploadH\x00\x42\x08\n\x06output*9\n\x0f\x45ncodedFileType\x12\x14\n\x10\x44\x45\x46\x41ULT_FILETYPE\x10\x00\x12\x07\n\x03MP4\x10\x01\x12\x07\n\x03OGG\x10\x02*0\n\x0eStreamProtocol\x12\x14\n\x10\x44\x45\x46\x41ULT_PROTOCOL\x10\x00\x12\x08\n\x04RTMP\x10\x01*N\n\x15SegmentedFileProtocol\x12#\n\x1f\x44\x45\x46\x41ULT_SEGMENTED_FILE_PROTOCOL\x10\x00\x12\x10\n\x0cHLS_PROTOCOL\x10\x01*/\n\nAudioCodec\x12\x0e\n\nDEFAULT_AC\x10\x00\x12\x08\n\x04OPUS\x10\x01\x12\x07\n\x03\x41\x41\x43\x10\x02*M\n\nVideoCodec\x12\x0e\n\nDEFAULT_VC\x10\x00\x12\x11\n\rH264_BASELINE\x10\x01\x12\r\n\tH264_MAIN\x10\x02\x12\r\n\tH264_HIGH\x10\x03*\xcf\x01\n\x15\x45ncodingOptionsPreset\x12\x10\n\x0cH264_720P_30\x10\x00\x12\x10\n\x0cH264_720P_60\x10\x01\x12\x11\n\rH264_1080P_30\x10\x02\x12\x11\n\rH264_1080P_60\x10\x03\x12\x19\n\x15PORTRAIT_H264_720P_30\x10\x04\x12\x19\n\x15PORTRAIT_H264_720P_60\x10\x05\x12\x1a\n\x16PORTRAIT_H264_1080P_30\x10\x06\x12\x1a\n\x16PORTRAIT_H264_1080P_60\x10\x07*\x9f\x01\n\x0c\x45gressStatus\x12\x13\n\x0f\x45GRESS_STARTING\x10\x00\x12\x11\n\rEGRESS_ACTIVE\x10\x01\x12\x11\n\rEGRESS_ENDING\x10\x02\x12\x13\n\x0f\x45GRESS_COMPLETE\x10\x03\x12\x11\n\rEGRESS_FAILED\x10\x04\x12\x12\n\x0e\x45GRESS_ABORTED\x10\x05\x12\x18\n\x14\x45GRESS_LIMIT_REACHED\x10\x06\x32\xca\x04\n\x06\x45gress\x12T\n\x18StartRoomCompositeEgress\x12#.livekit.RoomCompositeEgressRequest\x1a\x13.livekit.EgressInfo\x12V\n\x19StartTrackCompositeEgress\x12$.livekit.TrackCompositeEgressRequest\x1a\x13.livekit.EgressInfo\x12\x44\n\x10StartTrackEgress\x12\x1b.livekit.TrackEgressRequest\x1a\x13.livekit.EgressInfo\x12@\n\x0eStartWebEgress\x12\x19.livekit.WebEgressRequest\x1a\x13.livekit.EgressInfo\x12\x41\n\x0cUpdateLayout\x12\x1c.livekit.UpdateLayoutRequest\x1a\x13.livekit.EgressInfo\x12\x41\n\x0cUpdateStream\x12\x1c.livekit.UpdateStreamRequest\x1a\x13.livekit.EgressInfo\x12\x45\n\nListEgress\x12\x1a.livekit.ListEgressRequest\x1a\x1b.livekit.ListEgressResponse\x12=\n\nStopEgress\x12\x1a.livekit.StopEgressRequest\x1a\x13.livekit.EgressInfoBFZ#github.com/livekit/protocol/livekit\xaa\x02\rLiveKit.Proto\xea\x02\x0eLiveKit::Protob\x06proto3'
+    b'\n\x14livekit_egress.proto\x12\x07livekit\x1a\x14livekit_models.proto"\xa0\x04\n\x1aRoomCompositeEgressRequest\x12\x11\n\troom_name\x18\x01 \x01(\t\x12\x0e\n\x06layout\x18\x02 \x01(\t\x12\x12\n\naudio_only\x18\x03 \x01(\x08\x12\x12\n\nvideo_only\x18\x04 \x01(\x08\x12\x17\n\x0f\x63ustom_base_url\x18\x05 \x01(\t\x12.\n\x04\x66ile\x18\x06 \x01(\x0b\x32\x1a.livekit.EncodedFileOutputB\x02\x18\x01H\x00\x12+\n\x06stream\x18\x07 \x01(\x0b\x32\x15.livekit.StreamOutputB\x02\x18\x01H\x00\x12\x34\n\x08segments\x18\n \x01(\x0b\x32\x1c.livekit.SegmentedFileOutputB\x02\x18\x01H\x00\x12\x30\n\x06preset\x18\x08 \x01(\x0e\x32\x1e.livekit.EncodingOptionsPresetH\x01\x12,\n\x08\x61\x64vanced\x18\t \x01(\x0b\x32\x18.livekit.EncodingOptionsH\x01\x12\x30\n\x0c\x66ile_outputs\x18\x0b \x03(\x0b\x32\x1a.livekit.EncodedFileOutput\x12-\n\x0estream_outputs\x18\x0c \x03(\x0b\x32\x15.livekit.StreamOutput\x12\x35\n\x0fsegment_outputs\x18\r \x03(\x0b\x32\x1c.livekit.SegmentedFileOutputB\x08\n\x06outputB\t\n\x07options"\xe7\x03\n\x10WebEgressRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x12\n\naudio_only\x18\x02 \x01(\x08\x12\x12\n\nvideo_only\x18\x03 \x01(\x08\x12.\n\x04\x66ile\x18\x04 \x01(\x0b\x32\x1a.livekit.EncodedFileOutputB\x02\x18\x01H\x00\x12+\n\x06stream\x18\x05 \x01(\x0b\x32\x15.livekit.StreamOutputB\x02\x18\x01H\x00\x12\x34\n\x08segments\x18\x06 \x01(\x0b\x32\x1c.livekit.SegmentedFileOutputB\x02\x18\x01H\x00\x12\x30\n\x06preset\x18\x07 \x01(\x0e\x32\x1e.livekit.EncodingOptionsPresetH\x01\x12,\n\x08\x61\x64vanced\x18\x08 \x01(\x0b\x32\x18.livekit.EncodingOptionsH\x01\x12\x30\n\x0c\x66ile_outputs\x18\t \x03(\x0b\x32\x1a.livekit.EncodedFileOutput\x12-\n\x0estream_outputs\x18\n \x03(\x0b\x32\x15.livekit.StreamOutput\x12\x35\n\x0fsegment_outputs\x18\x0b \x03(\x0b\x32\x1c.livekit.SegmentedFileOutputB\x08\n\x06outputB\t\n\x07options"\x80\x04\n\x1bTrackCompositeEgressRequest\x12\x11\n\troom_name\x18\x01 \x01(\t\x12\x16\n\x0e\x61udio_track_id\x18\x02 \x01(\t\x12\x16\n\x0evideo_track_id\x18\x03 \x01(\t\x12.\n\x04\x66ile\x18\x04 \x01(\x0b\x32\x1a.livekit.EncodedFileOutputB\x02\x18\x01H\x00\x12+\n\x06stream\x18\x05 \x01(\x0b\x32\x15.livekit.StreamOutputB\x02\x18\x01H\x00\x12\x34\n\x08segments\x18\x08 \x01(\x0b\x32\x1c.livekit.SegmentedFileOutputB\x02\x18\x01H\x00\x12\x30\n\x06preset\x18\x06 \x01(\x0e\x32\x1e.livekit.EncodingOptionsPresetH\x01\x12,\n\x08\x61\x64vanced\x18\x07 \x01(\x0b\x32\x18.livekit.EncodingOptionsH\x01\x12\x30\n\x0c\x66ile_outputs\x18\x0b \x03(\x0b\x32\x1a.livekit.EncodedFileOutput\x12-\n\x0estream_outputs\x18\x0c \x03(\x0b\x32\x15.livekit.StreamOutput\x12\x35\n\x0fsegment_outputs\x18\r \x03(\x0b\x32\x1c.livekit.SegmentedFileOutputB\x08\n\x06outputB\t\n\x07options"\x87\x01\n\x12TrackEgressRequest\x12\x11\n\troom_name\x18\x01 \x01(\t\x12\x10\n\x08track_id\x18\x02 \x01(\t\x12)\n\x04\x66ile\x18\x03 \x01(\x0b\x32\x19.livekit.DirectFileOutputH\x00\x12\x17\n\rwebsocket_url\x18\x04 \x01(\tH\x00\x42\x08\n\x06output"\x8e\x02\n\x11\x45ncodedFileOutput\x12+\n\tfile_type\x18\x01 \x01(\x0e\x32\x18.livekit.EncodedFileType\x12\x10\n\x08\x66ilepath\x18\x02 \x01(\t\x12\x18\n\x10\x64isable_manifest\x18\x06 \x01(\x08\x12\x1f\n\x02s3\x18\x03 \x01(\x0b\x32\x11.livekit.S3UploadH\x00\x12!\n\x03gcp\x18\x04 \x01(\x0b\x32\x12.livekit.GCPUploadH\x00\x12)\n\x05\x61zure\x18\x05 \x01(\x0b\x32\x18.livekit.AzureBlobUploadH\x00\x12\'\n\x06\x61liOSS\x18\x07 \x01(\x0b\x32\x15.livekit.AliOSSUploadH\x00\x42\x08\n\x06output"\x84\x03\n\x13SegmentedFileOutput\x12\x30\n\x08protocol\x18\x01 \x01(\x0e\x32\x1e.livekit.SegmentedFileProtocol\x12\x17\n\x0f\x66ilename_prefix\x18\x02 \x01(\t\x12\x15\n\rplaylist_name\x18\x03 \x01(\t\x12\x18\n\x10segment_duration\x18\x04 \x01(\r\x12\x35\n\x0f\x66ilename_suffix\x18\n \x01(\x0e\x32\x1c.livekit.SegmentedFileSuffix\x12\x18\n\x10\x64isable_manifest\x18\x08 \x01(\x08\x12\x1f\n\x02s3\x18\x05 \x01(\x0b\x32\x11.livekit.S3UploadH\x00\x12!\n\x03gcp\x18\x06 \x01(\x0b\x32\x12.livekit.GCPUploadH\x00\x12)\n\x05\x61zure\x18\x07 \x01(\x0b\x32\x18.livekit.AzureBlobUploadH\x00\x12\'\n\x06\x61liOSS\x18\t \x01(\x0b\x32\x15.livekit.AliOSSUploadH\x00\x42\x08\n\x06output"\xe0\x01\n\x10\x44irectFileOutput\x12\x10\n\x08\x66ilepath\x18\x01 \x01(\t\x12\x18\n\x10\x64isable_manifest\x18\x05 \x01(\x08\x12\x1f\n\x02s3\x18\x02 \x01(\x0b\x32\x11.livekit.S3UploadH\x00\x12!\n\x03gcp\x18\x03 \x01(\x0b\x32\x12.livekit.GCPUploadH\x00\x12)\n\x05\x61zure\x18\x04 \x01(\x0b\x32\x18.livekit.AzureBlobUploadH\x00\x12\'\n\x06\x61liOSS\x18\x06 \x01(\x0b\x32\x15.livekit.AliOSSUploadH\x00\x42\x08\n\x06output"\xef\x01\n\x08S3Upload\x12\x12\n\naccess_key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x0e\n\x06region\x18\x03 \x01(\t\x12\x10\n\x08\x65ndpoint\x18\x04 \x01(\t\x12\x0e\n\x06\x62ucket\x18\x05 \x01(\t\x12\x18\n\x10\x66orce_path_style\x18\x06 \x01(\x08\x12\x31\n\x08metadata\x18\x07 \x03(\x0b\x32\x1f.livekit.S3Upload.MetadataEntry\x12\x0f\n\x07tagging\x18\x08 \x01(\t\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01"0\n\tGCPUpload\x12\x13\n\x0b\x63redentials\x18\x01 \x01(\t\x12\x0e\n\x06\x62ucket\x18\x02 \x01(\t"T\n\x0f\x41zureBlobUpload\x12\x14\n\x0c\x61\x63\x63ount_name\x18\x01 \x01(\t\x12\x13\n\x0b\x61\x63\x63ount_key\x18\x02 \x01(\t\x12\x16\n\x0e\x63ontainer_name\x18\x03 \x01(\t"d\n\x0c\x41liOSSUpload\x12\x12\n\naccess_key\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x0e\n\x06region\x18\x03 \x01(\t\x12\x10\n\x08\x65ndpoint\x18\x04 \x01(\t\x12\x0e\n\x06\x62ucket\x18\x05 \x01(\t"G\n\x0cStreamOutput\x12)\n\x08protocol\x18\x01 \x01(\x0e\x32\x17.livekit.StreamProtocol\x12\x0c\n\x04urls\x18\x02 \x03(\t"\x89\x02\n\x0f\x45ncodingOptions\x12\r\n\x05width\x18\x01 \x01(\x05\x12\x0e\n\x06height\x18\x02 \x01(\x05\x12\r\n\x05\x64\x65pth\x18\x03 \x01(\x05\x12\x11\n\tframerate\x18\x04 \x01(\x05\x12(\n\x0b\x61udio_codec\x18\x05 \x01(\x0e\x32\x13.livekit.AudioCodec\x12\x15\n\raudio_bitrate\x18\x06 \x01(\x05\x12\x17\n\x0f\x61udio_frequency\x18\x07 \x01(\x05\x12(\n\x0bvideo_codec\x18\x08 \x01(\x0e\x32\x13.livekit.VideoCodec\x12\x15\n\rvideo_bitrate\x18\t \x01(\x05\x12\x1a\n\x12key_frame_interval\x18\n \x01(\x01"8\n\x13UpdateLayoutRequest\x12\x11\n\tegress_id\x18\x01 \x01(\t\x12\x0e\n\x06layout\x18\x02 \x01(\t"]\n\x13UpdateStreamRequest\x12\x11\n\tegress_id\x18\x01 \x01(\t\x12\x17\n\x0f\x61\x64\x64_output_urls\x18\x02 \x03(\t\x12\x1a\n\x12remove_output_urls\x18\x03 \x03(\t"I\n\x11ListEgressRequest\x12\x11\n\troom_name\x18\x01 \x01(\t\x12\x11\n\tegress_id\x18\x02 \x01(\t\x12\x0e\n\x06\x61\x63tive\x18\x03 \x01(\x08"8\n\x12ListEgressResponse\x12"\n\x05items\x18\x01 \x03(\x0b\x32\x13.livekit.EgressInfo"&\n\x11StopEgressRequest\x12\x11\n\tegress_id\x18\x01 \x01(\t"\x97\x05\n\nEgressInfo\x12\x11\n\tegress_id\x18\x01 \x01(\t\x12\x0f\n\x07room_id\x18\x02 \x01(\t\x12\x11\n\troom_name\x18\r \x01(\t\x12%\n\x06status\x18\x03 \x01(\x0e\x32\x15.livekit.EgressStatus\x12\x12\n\nstarted_at\x18\n \x01(\x03\x12\x10\n\x08\x65nded_at\x18\x0b \x01(\x03\x12\r\n\x05\x65rror\x18\t \x01(\t\x12=\n\x0eroom_composite\x18\x04 \x01(\x0b\x32#.livekit.RoomCompositeEgressRequestH\x00\x12?\n\x0ftrack_composite\x18\x05 \x01(\x0b\x32$.livekit.TrackCompositeEgressRequestH\x00\x12,\n\x05track\x18\x06 \x01(\x0b\x32\x1b.livekit.TrackEgressRequestH\x00\x12(\n\x03web\x18\x0e \x01(\x0b\x32\x19.livekit.WebEgressRequestH\x00\x12-\n\x06stream\x18\x07 \x01(\x0b\x32\x17.livekit.StreamInfoListB\x02\x18\x01H\x01\x12%\n\x04\x66ile\x18\x08 \x01(\x0b\x32\x11.livekit.FileInfoB\x02\x18\x01H\x01\x12-\n\x08segments\x18\x0c \x01(\x0b\x32\x15.livekit.SegmentsInfoB\x02\x18\x01H\x01\x12+\n\x0estream_results\x18\x0f \x03(\x0b\x32\x13.livekit.StreamInfo\x12\'\n\x0c\x66ile_results\x18\x10 \x03(\x0b\x32\x11.livekit.FileInfo\x12.\n\x0fsegment_results\x18\x11 \x03(\x0b\x32\x15.livekit.SegmentsInfoB\t\n\x07requestB\x08\n\x06result"7\n\x0eStreamInfoList\x12!\n\x04info\x18\x01 \x03(\x0b\x32\x13.livekit.StreamInfo:\x02\x18\x01"\xbc\x01\n\nStreamInfo\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x12\n\nstarted_at\x18\x02 \x01(\x03\x12\x10\n\x08\x65nded_at\x18\x03 \x01(\x03\x12\x10\n\x08\x64uration\x18\x04 \x01(\x03\x12*\n\x06status\x18\x05 \x01(\x0e\x32\x1a.livekit.StreamInfo.Status\x12\r\n\x05\x65rror\x18\x06 \x01(\t".\n\x06Status\x12\n\n\x06\x41\x43TIVE\x10\x00\x12\x0c\n\x08\x46INISHED\x10\x01\x12\n\n\x06\x46\x41ILED\x10\x02"t\n\x08\x46ileInfo\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x12\n\nstarted_at\x18\x02 \x01(\x03\x12\x10\n\x08\x65nded_at\x18\x03 \x01(\x03\x12\x10\n\x08\x64uration\x18\x06 \x01(\x03\x12\x0c\n\x04size\x18\x04 \x01(\x03\x12\x10\n\x08location\x18\x05 \x01(\t"\x9d\x01\n\x0cSegmentsInfo\x12\x15\n\rplaylist_name\x18\x01 \x01(\t\x12\x10\n\x08\x64uration\x18\x02 \x01(\x03\x12\x0c\n\x04size\x18\x03 \x01(\x03\x12\x19\n\x11playlist_location\x18\x04 \x01(\t\x12\x15\n\rsegment_count\x18\x05 \x01(\x03\x12\x12\n\nstarted_at\x18\x06 \x01(\x03\x12\x10\n\x08\x65nded_at\x18\x07 \x01(\x03"\xb6\x01\n\x0f\x41utoTrackEgress\x12\x10\n\x08\x66ilepath\x18\x01 \x01(\t\x12\x18\n\x10\x64isable_manifest\x18\x05 \x01(\x08\x12\x1f\n\x02s3\x18\x02 \x01(\x0b\x32\x11.livekit.S3UploadH\x00\x12!\n\x03gcp\x18\x03 \x01(\x0b\x32\x12.livekit.GCPUploadH\x00\x12)\n\x05\x61zure\x18\x04 \x01(\x0b\x32\x18.livekit.AzureBlobUploadH\x00\x42\x08\n\x06output*9\n\x0f\x45ncodedFileType\x12\x14\n\x10\x44\x45\x46\x41ULT_FILETYPE\x10\x00\x12\x07\n\x03MP4\x10\x01\x12\x07\n\x03OGG\x10\x02*N\n\x15SegmentedFileProtocol\x12#\n\x1f\x44\x45\x46\x41ULT_SEGMENTED_FILE_PROTOCOL\x10\x00\x12\x10\n\x0cHLS_PROTOCOL\x10\x01*/\n\x13SegmentedFileSuffix\x12\t\n\x05INDEX\x10\x00\x12\r\n\tTIMESTAMP\x10\x01*0\n\x0eStreamProtocol\x12\x14\n\x10\x44\x45\x46\x41ULT_PROTOCOL\x10\x00\x12\x08\n\x04RTMP\x10\x01*\xcf\x01\n\x15\x45ncodingOptionsPreset\x12\x10\n\x0cH264_720P_30\x10\x00\x12\x10\n\x0cH264_720P_60\x10\x01\x12\x11\n\rH264_1080P_30\x10\x02\x12\x11\n\rH264_1080P_60\x10\x03\x12\x19\n\x15PORTRAIT_H264_720P_30\x10\x04\x12\x19\n\x15PORTRAIT_H264_720P_60\x10\x05\x12\x1a\n\x16PORTRAIT_H264_1080P_30\x10\x06\x12\x1a\n\x16PORTRAIT_H264_1080P_60\x10\x07*\x9f\x01\n\x0c\x45gressStatus\x12\x13\n\x0f\x45GRESS_STARTING\x10\x00\x12\x11\n\rEGRESS_ACTIVE\x10\x01\x12\x11\n\rEGRESS_ENDING\x10\x02\x12\x13\n\x0f\x45GRESS_COMPLETE\x10\x03\x12\x11\n\rEGRESS_FAILED\x10\x04\x12\x12\n\x0e\x45GRESS_ABORTED\x10\x05\x12\x18\n\x14\x45GRESS_LIMIT_REACHED\x10\x06\x32\xca\x04\n\x06\x45gress\x12T\n\x18StartRoomCompositeEgress\x12#.livekit.RoomCompositeEgressRequest\x1a\x13.livekit.EgressInfo\x12V\n\x19StartTrackCompositeEgress\x12$.livekit.TrackCompositeEgressRequest\x1a\x13.livekit.EgressInfo\x12\x44\n\x10StartTrackEgress\x12\x1b.livekit.TrackEgressRequest\x1a\x13.livekit.EgressInfo\x12@\n\x0eStartWebEgress\x12\x19.livekit.WebEgressRequest\x1a\x13.livekit.EgressInfo\x12\x41\n\x0cUpdateLayout\x12\x1c.livekit.UpdateLayoutRequest\x1a\x13.livekit.EgressInfo\x12\x41\n\x0cUpdateStream\x12\x1c.livekit.UpdateStreamRequest\x1a\x13.livekit.EgressInfo\x12\x45\n\nListEgress\x12\x1a.livekit.ListEgressRequest\x1a\x1b.livekit.ListEgressResponse\x12=\n\nStopEgress\x12\x1a.livekit.StopEgressRequest\x1a\x13.livekit.EgressInfoBFZ#github.com/livekit/protocol/livekit\xaa\x02\rLiveKit.Proto\xea\x02\x0eLiveKit::Protob\x06proto3'
 )
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, "livekit_egress_pb2", globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
-
     DESCRIPTOR._options = None
     DESCRIPTOR._serialized_options = b"Z#github.com/livekit/protocol/livekit\252\002\rLiveKit.Proto\352\002\016LiveKit::Proto"
+    _ROOMCOMPOSITEEGRESSREQUEST.fields_by_name["file"]._options = None
+    _ROOMCOMPOSITEEGRESSREQUEST.fields_by_name["file"]._serialized_options = b"\030\001"
+    _ROOMCOMPOSITEEGRESSREQUEST.fields_by_name["stream"]._options = None
+    _ROOMCOMPOSITEEGRESSREQUEST.fields_by_name[
+        "stream"
+    ]._serialized_options = b"\030\001"
+    _ROOMCOMPOSITEEGRESSREQUEST.fields_by_name["segments"]._options = None
+    _ROOMCOMPOSITEEGRESSREQUEST.fields_by_name[
+        "segments"
+    ]._serialized_options = b"\030\001"
+    _WEBEGRESSREQUEST.fields_by_name["file"]._options = None
+    _WEBEGRESSREQUEST.fields_by_name["file"]._serialized_options = b"\030\001"
+    _WEBEGRESSREQUEST.fields_by_name["stream"]._options = None
+    _WEBEGRESSREQUEST.fields_by_name["stream"]._serialized_options = b"\030\001"
+    _WEBEGRESSREQUEST.fields_by_name["segments"]._options = None
+    _WEBEGRESSREQUEST.fields_by_name["segments"]._serialized_options = b"\030\001"
+    _TRACKCOMPOSITEEGRESSREQUEST.fields_by_name["file"]._options = None
+    _TRACKCOMPOSITEEGRESSREQUEST.fields_by_name[
+        "file"
+    ]._serialized_options = b"\030\001"
+    _TRACKCOMPOSITEEGRESSREQUEST.fields_by_name["stream"]._options = None
+    _TRACKCOMPOSITEEGRESSREQUEST.fields_by_name[
+        "stream"
+    ]._serialized_options = b"\030\001"
+    _TRACKCOMPOSITEEGRESSREQUEST.fields_by_name["segments"]._options = None
+    _TRACKCOMPOSITEEGRESSREQUEST.fields_by_name[
+        "segments"
+    ]._serialized_options = b"\030\001"
     _S3UPLOAD_METADATAENTRY._options = None
     _S3UPLOAD_METADATAENTRY._serialized_options = b"8\001"
-    _ENCODEDFILETYPE._serialized_start = 4363
-    _ENCODEDFILETYPE._serialized_end = 4420
-    _STREAMPROTOCOL._serialized_start = 4422
-    _STREAMPROTOCOL._serialized_end = 4470
-    _SEGMENTEDFILEPROTOCOL._serialized_start = 4472
-    _SEGMENTEDFILEPROTOCOL._serialized_end = 4550
-    _AUDIOCODEC._serialized_start = 4552
-    _AUDIOCODEC._serialized_end = 4599
-    _VIDEOCODEC._serialized_start = 4601
-    _VIDEOCODEC._serialized_end = 4678
-    _ENCODINGOPTIONSPRESET._serialized_start = 4681
-    _ENCODINGOPTIONSPRESET._serialized_end = 4888
-    _EGRESSSTATUS._serialized_start = 4891
-    _EGRESSSTATUS._serialized_end = 5050
-    _ROOMCOMPOSITEEGRESSREQUEST._serialized_start = 34
-    _ROOMCOMPOSITEEGRESSREQUEST._serialized_end = 414
-    _TRACKCOMPOSITEEGRESSREQUEST._serialized_start = 417
-    _TRACKCOMPOSITEEGRESSREQUEST._serialized_end = 765
-    _TRACKEGRESSREQUEST._serialized_start = 768
-    _TRACKEGRESSREQUEST._serialized_end = 903
-    _WEBEGRESSREQUEST._serialized_start = 906
-    _WEBEGRESSREQUEST._serialized_end = 1229
-    _ENCODEDFILEOUTPUT._serialized_start = 1232
-    _ENCODEDFILEOUTPUT._serialized_end = 1502
-    _SEGMENTEDFILEOUTPUT._serialized_start = 1505
-    _SEGMENTEDFILEOUTPUT._serialized_end = 1838
-    _DIRECTFILEOUTPUT._serialized_start = 1841
-    _DIRECTFILEOUTPUT._serialized_end = 2065
-    _S3UPLOAD._serialized_start = 2068
-    _S3UPLOAD._serialized_end = 2307
-    _S3UPLOAD_METADATAENTRY._serialized_start = 2260
-    _S3UPLOAD_METADATAENTRY._serialized_end = 2307
-    _GCPUPLOAD._serialized_start = 2309
-    _GCPUPLOAD._serialized_end = 2357
-    _AZUREBLOBUPLOAD._serialized_start = 2359
-    _AZUREBLOBUPLOAD._serialized_end = 2443
-    _ALIOSSUPLOAD._serialized_start = 2445
-    _ALIOSSUPLOAD._serialized_end = 2545
-    _STREAMOUTPUT._serialized_start = 2547
-    _STREAMOUTPUT._serialized_end = 2618
-    _ENCODINGOPTIONS._serialized_start = 2621
-    _ENCODINGOPTIONS._serialized_end = 2858
-    _UPDATELAYOUTREQUEST._serialized_start = 2860
-    _UPDATELAYOUTREQUEST._serialized_end = 2916
-    _UPDATESTREAMREQUEST._serialized_start = 2918
-    _UPDATESTREAMREQUEST._serialized_end = 3011
-    _LISTEGRESSREQUEST._serialized_start = 3013
-    _LISTEGRESSREQUEST._serialized_end = 3051
-    _LISTEGRESSRESPONSE._serialized_start = 3053
-    _LISTEGRESSRESPONSE._serialized_end = 3109
-    _STOPEGRESSREQUEST._serialized_start = 3111
-    _STOPEGRESSREQUEST._serialized_end = 3149
-    _EGRESSINFO._serialized_start = 3152
-    _EGRESSINFO._serialized_end = 3669
-    _STREAMINFOLIST._serialized_start = 3671
-    _STREAMINFOLIST._serialized_end = 3722
-    _STREAMINFO._serialized_start = 3725
-    _STREAMINFO._serialized_end = 3898
-    _STREAMINFO_STATUS._serialized_start = 3852
-    _STREAMINFO_STATUS._serialized_end = 3898
-    _FILEINFO._serialized_start = 3900
-    _FILEINFO._serialized_end = 4016
-    _SEGMENTSINFO._serialized_start = 4019
-    _SEGMENTSINFO._serialized_end = 4176
-    _AUTOTRACKEGRESS._serialized_start = 4179
-    _AUTOTRACKEGRESS._serialized_end = 4361
-    _EGRESS._serialized_start = 5053
-    _EGRESS._serialized_end = 5639
+    _EGRESSINFO.fields_by_name["stream"]._options = None
+    _EGRESSINFO.fields_by_name["stream"]._serialized_options = b"\030\001"
+    _EGRESSINFO.fields_by_name["file"]._options = None
+    _EGRESSINFO.fields_by_name["file"]._serialized_options = b"\030\001"
+    _EGRESSINFO.fields_by_name["segments"]._options = None
+    _EGRESSINFO.fields_by_name["segments"]._serialized_options = b"\030\001"
+    _STREAMINFOLIST._options = None
+    _STREAMINFOLIST._serialized_options = b"\030\001"
+    _ENCODEDFILETYPE._serialized_start = 5160
+    _ENCODEDFILETYPE._serialized_end = 5217
+    _SEGMENTEDFILEPROTOCOL._serialized_start = 5219
+    _SEGMENTEDFILEPROTOCOL._serialized_end = 5297
+    _SEGMENTEDFILESUFFIX._serialized_start = 5299
+    _SEGMENTEDFILESUFFIX._serialized_end = 5346
+    _STREAMPROTOCOL._serialized_start = 5348
+    _STREAMPROTOCOL._serialized_end = 5396
+    _ENCODINGOPTIONSPRESET._serialized_start = 5399
+    _ENCODINGOPTIONSPRESET._serialized_end = 5606
+    _EGRESSSTATUS._serialized_start = 5609
+    _EGRESSSTATUS._serialized_end = 5768
+    _ROOMCOMPOSITEEGRESSREQUEST._serialized_start = 56
+    _ROOMCOMPOSITEEGRESSREQUEST._serialized_end = 600
+    _WEBEGRESSREQUEST._serialized_start = 603
+    _WEBEGRESSREQUEST._serialized_end = 1090
+    _TRACKCOMPOSITEEGRESSREQUEST._serialized_start = 1093
+    _TRACKCOMPOSITEEGRESSREQUEST._serialized_end = 1605
+    _TRACKEGRESSREQUEST._serialized_start = 1608
+    _TRACKEGRESSREQUEST._serialized_end = 1743
+    _ENCODEDFILEOUTPUT._serialized_start = 1746
+    _ENCODEDFILEOUTPUT._serialized_end = 2016
+    _SEGMENTEDFILEOUTPUT._serialized_start = 2019
+    _SEGMENTEDFILEOUTPUT._serialized_end = 2407
+    _DIRECTFILEOUTPUT._serialized_start = 2410
+    _DIRECTFILEOUTPUT._serialized_end = 2634
+    _S3UPLOAD._serialized_start = 2637
+    _S3UPLOAD._serialized_end = 2876
+    _S3UPLOAD_METADATAENTRY._serialized_start = 2829
+    _S3UPLOAD_METADATAENTRY._serialized_end = 2876
+    _GCPUPLOAD._serialized_start = 2878
+    _GCPUPLOAD._serialized_end = 2926
+    _AZUREBLOBUPLOAD._serialized_start = 2928
+    _AZUREBLOBUPLOAD._serialized_end = 3012
+    _ALIOSSUPLOAD._serialized_start = 3014
+    _ALIOSSUPLOAD._serialized_end = 3114
+    _STREAMOUTPUT._serialized_start = 3116
+    _STREAMOUTPUT._serialized_end = 3187
+    _ENCODINGOPTIONS._serialized_start = 3190
+    _ENCODINGOPTIONS._serialized_end = 3455
+    _UPDATELAYOUTREQUEST._serialized_start = 3457
+    _UPDATELAYOUTREQUEST._serialized_end = 3513
+    _UPDATESTREAMREQUEST._serialized_start = 3515
+    _UPDATESTREAMREQUEST._serialized_end = 3608
+    _LISTEGRESSREQUEST._serialized_start = 3610
+    _LISTEGRESSREQUEST._serialized_end = 3683
+    _LISTEGRESSRESPONSE._serialized_start = 3685
+    _LISTEGRESSRESPONSE._serialized_end = 3741
+    _STOPEGRESSREQUEST._serialized_start = 3743
+    _STOPEGRESSREQUEST._serialized_end = 3781
+    _EGRESSINFO._serialized_start = 3784
+    _EGRESSINFO._serialized_end = 4447
+    _STREAMINFOLIST._serialized_start = 4449
+    _STREAMINFOLIST._serialized_end = 4504
+    _STREAMINFO._serialized_start = 4507
+    _STREAMINFO._serialized_end = 4695
+    _STREAMINFO_STATUS._serialized_start = 4649
+    _STREAMINFO_STATUS._serialized_end = 4695
+    _FILEINFO._serialized_start = 4697
+    _FILEINFO._serialized_end = 4813
+    _SEGMENTSINFO._serialized_start = 4816
+    _SEGMENTSINFO._serialized_end = 4973
+    _AUTOTRACKEGRESS._serialized_start = 4976
+    _AUTOTRACKEGRESS._serialized_end = 5158
+    _EGRESS._serialized_start = 5771
+    _EGRESS._serialized_end = 6357
 # @@protoc_insertion_point(module_scope)

@@ -18,6 +18,7 @@ class WebhookEvent(_message.Message):
         "event",
         "id",
         "ingress_info",
+        "num_dropped",
         "participant",
         "room",
         "track",
@@ -27,6 +28,7 @@ class WebhookEvent(_message.Message):
     EVENT_FIELD_NUMBER: _ClassVar[int]
     ID_FIELD_NUMBER: _ClassVar[int]
     INGRESS_INFO_FIELD_NUMBER: _ClassVar[int]
+    NUM_DROPPED_FIELD_NUMBER: _ClassVar[int]
     PARTICIPANT_FIELD_NUMBER: _ClassVar[int]
     ROOM_FIELD_NUMBER: _ClassVar[int]
     TRACK_FIELD_NUMBER: _ClassVar[int]
@@ -35,6 +37,7 @@ class WebhookEvent(_message.Message):
     event: str
     id: str
     ingress_info: _livekit_ingress_pb2.IngressInfo
+    num_dropped: int
     participant: _livekit_models_pb2.ParticipantInfo
     room: _livekit_models_pb2.Room
     track: _livekit_models_pb2.TrackInfo
@@ -52,4 +55,5 @@ class WebhookEvent(_message.Message):
         track: _Optional[_Union[_livekit_models_pb2.TrackInfo, _Mapping]] = ...,
         id: _Optional[str] = ...,
         created_at: _Optional[int] = ...,
+        num_dropped: _Optional[int] = ...,
     ) -> None: ...

@@ -25,13 +25,21 @@ INGRESS_STARTED: AnalyticsEventType
 PARTICIPANT_ACTIVE: AnalyticsEventType
 PARTICIPANT_JOINED: AnalyticsEventType
 PARTICIPANT_LEFT: AnalyticsEventType
+PARTICIPANT_RESUMED: AnalyticsEventType
 RECONNECTED: AnalyticsEventType
 ROOM_CREATED: AnalyticsEventType
 ROOM_ENDED: AnalyticsEventType
 TRACK_MAX_SUBSCRIBED_VIDEO_QUALITY: AnalyticsEventType
+TRACK_MUTED: AnalyticsEventType
 TRACK_PUBLISHED: AnalyticsEventType
 TRACK_PUBLISHED_UPDATE: AnalyticsEventType
+TRACK_PUBLISH_REQUESTED: AnalyticsEventType
+TRACK_PUBLISH_STATS: AnalyticsEventType
 TRACK_SUBSCRIBED: AnalyticsEventType
+TRACK_SUBSCRIBE_FAILED: AnalyticsEventType
+TRACK_SUBSCRIBE_REQUESTED: AnalyticsEventType
+TRACK_SUBSCRIBE_STATS: AnalyticsEventType
+TRACK_UNMUTED: AnalyticsEventType
 TRACK_UNPUBLISHED: AnalyticsEventType
 TRACK_UNSUBSCRIBED: AnalyticsEventType
 UPSTREAM: StreamType
@@ -42,17 +50,20 @@ class AnalyticsClientMeta(_message.Message):
         "client_connect_time",
         "connection_type",
         "node",
+        "reconnect_reason",
         "region",
     ]
     CLIENT_ADDR_FIELD_NUMBER: _ClassVar[int]
     CLIENT_CONNECT_TIME_FIELD_NUMBER: _ClassVar[int]
     CONNECTION_TYPE_FIELD_NUMBER: _ClassVar[int]
     NODE_FIELD_NUMBER: _ClassVar[int]
+    RECONNECT_REASON_FIELD_NUMBER: _ClassVar[int]
     REGION_FIELD_NUMBER: _ClassVar[int]
     client_addr: str
     client_connect_time: int
     connection_type: str
     node: str
+    reconnect_reason: _livekit_models_pb2.ReconnectReason
     region: str
     def __init__(
         self,
@@ -61,6 +72,9 @@ class AnalyticsClientMeta(_message.Message):
         client_addr: _Optional[str] = ...,
         client_connect_time: _Optional[int] = ...,
         connection_type: _Optional[str] = ...,
+        reconnect_reason: _Optional[
+            _Union[_livekit_models_pb2.ReconnectReason, str]
+        ] = ...,
     ) -> None: ...
 
 class AnalyticsEvent(_message.Message):
@@ -70,6 +84,7 @@ class AnalyticsEvent(_message.Message):
         "client_meta",
         "egress",
         "egress_id",
+        "error",
         "ingress",
         "ingress_id",
         "max_subscribed_video_quality",
@@ -79,16 +94,19 @@ class AnalyticsEvent(_message.Message):
         "publisher",
         "room",
         "room_id",
+        "rtp_stats",
         "timestamp",
         "track",
         "track_id",
         "type",
+        "video_layer",
     ]
     ANALYTICS_KEY_FIELD_NUMBER: _ClassVar[int]
     CLIENT_INFO_FIELD_NUMBER: _ClassVar[int]
     CLIENT_META_FIELD_NUMBER: _ClassVar[int]
     EGRESS_FIELD_NUMBER: _ClassVar[int]
     EGRESS_ID_FIELD_NUMBER: _ClassVar[int]
+    ERROR_FIELD_NUMBER: _ClassVar[int]
     INGRESS_FIELD_NUMBER: _ClassVar[int]
     INGRESS_ID_FIELD_NUMBER: _ClassVar[int]
     MAX_SUBSCRIBED_VIDEO_QUALITY_FIELD_NUMBER: _ClassVar[int]
@@ -98,15 +116,18 @@ class AnalyticsEvent(_message.Message):
     PUBLISHER_FIELD_NUMBER: _ClassVar[int]
     ROOM_FIELD_NUMBER: _ClassVar[int]
     ROOM_ID_FIELD_NUMBER: _ClassVar[int]
+    RTP_STATS_FIELD_NUMBER: _ClassVar[int]
     TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
     TRACK_FIELD_NUMBER: _ClassVar[int]
     TRACK_ID_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
+    VIDEO_LAYER_FIELD_NUMBER: _ClassVar[int]
     analytics_key: str
     client_info: _livekit_models_pb2.ClientInfo
     client_meta: AnalyticsClientMeta
     egress: _livekit_egress_pb2.EgressInfo
     egress_id: str
+    error: str
     ingress: _livekit_ingress_pb2.IngressInfo
     ingress_id: str
     max_subscribed_video_quality: _livekit_models_pb2.VideoQuality
@@ -116,10 +137,12 @@ class AnalyticsEvent(_message.Message):
     publisher: _livekit_models_pb2.ParticipantInfo
     room: _livekit_models_pb2.Room
     room_id: str
+    rtp_stats: _livekit_models_pb2.RTPStats
     timestamp: _timestamp_pb2.Timestamp
     track: _livekit_models_pb2.TrackInfo
     track_id: str
     type: AnalyticsEventType
+    video_layer: int
     def __init__(
         self,
         type: _Optional[_Union[AnalyticsEventType, str]] = ...,
@@ -146,6 +169,9 @@ class AnalyticsEvent(_message.Message):
         mime: _Optional[str] = ...,
         egress: _Optional[_Union[_livekit_egress_pb2.EgressInfo, _Mapping]] = ...,
         ingress: _Optional[_Union[_livekit_ingress_pb2.IngressInfo, _Mapping]] = ...,
+        error: _Optional[str] = ...,
+        rtp_stats: _Optional[_Union[_livekit_models_pb2.RTPStats, _Mapping]] = ...,
+        video_layer: _Optional[int] = ...,
     ) -> None: ...
 
 class AnalyticsEvents(_message.Message):

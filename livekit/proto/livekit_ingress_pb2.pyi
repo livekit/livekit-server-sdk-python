@@ -11,6 +11,13 @@ from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 
 DESCRIPTOR: _descriptor.FileDescriptor
+H264_1080P_30FPS_1_LAYER: IngressVideoEncodingPreset
+H264_1080P_30FPS_3_LAYERS: IngressVideoEncodingPreset
+H264_540P_25FPS_2_LAYERS: IngressVideoEncodingPreset
+H264_720P_30FPS_1_LAYER: IngressVideoEncodingPreset
+H264_720P_30FPS_3_LAYERS: IngressVideoEncodingPreset
+OPUS_MONO_64KBS: IngressAudioEncodingPreset
+OPUS_STEREO_96KBPS: IngressAudioEncodingPreset
 RTMP_INPUT: IngressInput
 
 class CreateIngressRequest(_message.Message):
@@ -54,28 +61,40 @@ class DeleteIngressRequest(_message.Message):
     ingress_id: str
     def __init__(self, ingress_id: _Optional[str] = ...) -> None: ...
 
-class IngressAudioOptions(_message.Message):
-    __slots__ = ["bitrate", "channels", "disable_dtx", "mime_type", "name", "source"]
+class IngressAudioEncodingOptions(_message.Message):
+    __slots__ = ["audio_codec", "bitrate", "channels", "disable_dtx"]
+    AUDIO_CODEC_FIELD_NUMBER: _ClassVar[int]
     BITRATE_FIELD_NUMBER: _ClassVar[int]
     CHANNELS_FIELD_NUMBER: _ClassVar[int]
     DISABLE_DTX_FIELD_NUMBER: _ClassVar[int]
-    MIME_TYPE_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    SOURCE_FIELD_NUMBER: _ClassVar[int]
+    audio_codec: _livekit_models_pb2.AudioCodec
     bitrate: int
     channels: int
     disable_dtx: bool
-    mime_type: str
+    def __init__(
+        self,
+        audio_codec: _Optional[_Union[_livekit_models_pb2.AudioCodec, str]] = ...,
+        bitrate: _Optional[int] = ...,
+        disable_dtx: bool = ...,
+        channels: _Optional[int] = ...,
+    ) -> None: ...
+
+class IngressAudioOptions(_message.Message):
+    __slots__ = ["name", "options", "preset", "source"]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    OPTIONS_FIELD_NUMBER: _ClassVar[int]
+    PRESET_FIELD_NUMBER: _ClassVar[int]
+    SOURCE_FIELD_NUMBER: _ClassVar[int]
     name: str
+    options: IngressAudioEncodingOptions
+    preset: IngressAudioEncodingPreset
     source: _livekit_models_pb2.TrackSource
     def __init__(
         self,
         name: _Optional[str] = ...,
         source: _Optional[_Union[_livekit_models_pb2.TrackSource, str]] = ...,
-        mime_type: _Optional[str] = ...,
-        bitrate: _Optional[int] = ...,
-        disable_dtx: bool = ...,
-        channels: _Optional[int] = ...,
+        preset: _Optional[_Union[IngressAudioEncodingPreset, str]] = ...,
+        options: _Optional[_Union[IngressAudioEncodingOptions, _Mapping]] = ...,
     ) -> None: ...
 
 class IngressInfo(_message.Message):
@@ -181,24 +200,39 @@ class IngressState(_message.Message):
         ] = ...,
     ) -> None: ...
 
-class IngressVideoOptions(_message.Message):
-    __slots__ = ["layers", "mime_type", "name", "source"]
+class IngressVideoEncodingOptions(_message.Message):
+    __slots__ = ["frame_rate", "layers", "video_codec"]
+    FRAME_RATE_FIELD_NUMBER: _ClassVar[int]
     LAYERS_FIELD_NUMBER: _ClassVar[int]
-    MIME_TYPE_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    SOURCE_FIELD_NUMBER: _ClassVar[int]
+    VIDEO_CODEC_FIELD_NUMBER: _ClassVar[int]
+    frame_rate: float
     layers: _containers.RepeatedCompositeFieldContainer[_livekit_models_pb2.VideoLayer]
-    mime_type: str
+    video_codec: _livekit_models_pb2.VideoCodec
+    def __init__(
+        self,
+        video_codec: _Optional[_Union[_livekit_models_pb2.VideoCodec, str]] = ...,
+        frame_rate: _Optional[float] = ...,
+        layers: _Optional[
+            _Iterable[_Union[_livekit_models_pb2.VideoLayer, _Mapping]]
+        ] = ...,
+    ) -> None: ...
+
+class IngressVideoOptions(_message.Message):
+    __slots__ = ["name", "options", "preset", "source"]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    OPTIONS_FIELD_NUMBER: _ClassVar[int]
+    PRESET_FIELD_NUMBER: _ClassVar[int]
+    SOURCE_FIELD_NUMBER: _ClassVar[int]
     name: str
+    options: IngressVideoEncodingOptions
+    preset: IngressVideoEncodingPreset
     source: _livekit_models_pb2.TrackSource
     def __init__(
         self,
         name: _Optional[str] = ...,
         source: _Optional[_Union[_livekit_models_pb2.TrackSource, str]] = ...,
-        mime_type: _Optional[str] = ...,
-        layers: _Optional[
-            _Iterable[_Union[_livekit_models_pb2.VideoLayer, _Mapping]]
-        ] = ...,
+        preset: _Optional[_Union[IngressVideoEncodingPreset, str]] = ...,
+        options: _Optional[_Union[IngressVideoEncodingOptions, _Mapping]] = ...,
     ) -> None: ...
 
 class InputAudioState(_message.Message):
@@ -207,11 +241,11 @@ class InputAudioState(_message.Message):
     MIME_TYPE_FIELD_NUMBER: _ClassVar[int]
     SAMPLE_RATE_FIELD_NUMBER: _ClassVar[int]
     channels: int
-    mime_type: int
+    mime_type: str
     sample_rate: int
     def __init__(
         self,
-        mime_type: _Optional[int] = ...,
+        mime_type: _Optional[str] = ...,
         channels: _Optional[int] = ...,
         sample_rate: _Optional[int] = ...,
     ) -> None: ...
@@ -224,11 +258,11 @@ class InputVideoState(_message.Message):
     WIDTH_FIELD_NUMBER: _ClassVar[int]
     framerate: int
     height: int
-    mime_type: int
+    mime_type: str
     width: int
     def __init__(
         self,
-        mime_type: _Optional[int] = ...,
+        mime_type: _Optional[str] = ...,
         width: _Optional[int] = ...,
         height: _Optional[int] = ...,
         framerate: _Optional[int] = ...,
@@ -284,4 +318,10 @@ class UpdateIngressRequest(_message.Message):
     ) -> None: ...
 
 class IngressInput(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = []
+
+class IngressAudioEncodingPreset(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = []
+
+class IngressVideoEncodingPreset(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = []

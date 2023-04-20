@@ -142,21 +142,24 @@ class RoomParticipantIdentity(_message.Message):
     ) -> None: ...
 
 class SendDataRequest(_message.Message):
-    __slots__ = ["data", "destination_sids", "kind", "room"]
+    __slots__ = ["data", "destination_sids", "kind", "room", "topic"]
     DATA_FIELD_NUMBER: _ClassVar[int]
     DESTINATION_SIDS_FIELD_NUMBER: _ClassVar[int]
     KIND_FIELD_NUMBER: _ClassVar[int]
     ROOM_FIELD_NUMBER: _ClassVar[int]
+    TOPIC_FIELD_NUMBER: _ClassVar[int]
     data: bytes
     destination_sids: _containers.RepeatedScalarFieldContainer[str]
     kind: _livekit_models_pb2.DataPacket.Kind
     room: str
+    topic: str
     def __init__(
         self,
         room: _Optional[str] = ...,
         data: _Optional[bytes] = ...,
         kind: _Optional[_Union[_livekit_models_pb2.DataPacket.Kind, str]] = ...,
         destination_sids: _Optional[_Iterable[str]] = ...,
+        topic: _Optional[str] = ...,
     ) -> None: ...
 
 class SendDataResponse(_message.Message):
