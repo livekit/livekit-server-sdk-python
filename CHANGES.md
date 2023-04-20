@@ -20,6 +20,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Meta
 
 - Updated pre-commit hooks
+- Add GitHub Actions for isort and black
 
 ## [0.4.1] - 2022-12-16
 
