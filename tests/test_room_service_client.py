@@ -2,24 +2,19 @@ import os
 
 import pytest
 
-from livekit import DataPacketKind, Room, RoomServiceClient
+import livekit
 
 
 @pytest.fixture
-def client() -> RoomServiceClient:
+def client() -> livekit.RoomServiceClient:
     host = os.environ.get("LIVEKIT_HOST", "http://localhost:7880")
     api_key = os.environ["LIVEKIT_API_KEY"]
     api_secret = os.environ["LIVEKIT_API_SECRET"]
-    return RoomServiceClient(host, api_key, api_secret)
+    return livekit.RoomServiceClient(host, api_key, api_secret)
 
 
 @pytest.fixture
-def name() -> str:
-    return "Test Room"
-
-
-@pytest.fixture
-def create_room(client) -> Room:
+def create_room(client) -> livekit.models.Room:
     return client.create_room("Test Room")
 
 
@@ -71,4 +66,4 @@ def test_update_room_metadata(client, create_room):
 
 def test_send_data(client, create_room):
     data = b"some awesome data"
-    client.send_data(create_room.name, data, DataPacketKind.RELIABLE)
+    client.send_data(create_room.name, data, livekit.models.DataPacket.RELIABLE)

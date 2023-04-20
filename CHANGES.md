@@ -10,6 +10,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - Updated LiveKit protocol to v1.5.4
+- **BREAKING**: Reorganized the package into submodules.
+  The new modules are friendlier re-exports of everything from the protocol, e.g. `livekit.models`.
+  The twirp servers and clients (such as `EgressServer`) can be found in `livekit.twirp`.
+- **BREAKING**: `DataPacketKind` removed in favour of `models.DataPacket.Kind` directly from the protocol models.
+  Use the constants `DataPacket.RELIABLE` and `DataPacket.LOSSY`.
+- **BREAKING**: `livekit.utils` has been made private (by renaming it to `_utils`)
 
 ### Meta
 

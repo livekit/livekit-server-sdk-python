@@ -9,20 +9,25 @@ API Reference: https://docs.livekit.io/guides/server-api
 ### Generate Access Token for a Client
 
 ```py
-from livekit import AccessToken, VideoGrant
+import livekit
 
-grant = VideoGrant(room_join=True, room="My Cool Room")
-access_token = AccessToken("<api key>", "<api secret>", grant=grant, identity="bob", name="Bob")
+grant = livekit.VideoGrant(room_join=True, room_name="My Cool Room")
+access_token = livekit.AccessToken("<api key>", "<api secret>", grant=grant, identity="bob", name="Bob")
 token = access_token.to_jwt()
 ```
 
 ### Using `RoomServiceClient`
 
 ```py
-from livekit import RoomServiceClient
+import livekit
 
-client = RoomServiceClient("<host>", "<api key>", "<api secret>")
-client.mute_published_track(room="<room name>", track="<track sid>")
+client = livekit.RoomServiceClient("<host>", "<api key>", "<api secret>")
+client.mute_published_track(
+    room_name="<room name>",
+    identity="Bob",
+    track_sid="<track sid>",
+    muted=True,
+)
 ```
 
 ## Local Development

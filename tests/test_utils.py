@@ -1,6 +1,6 @@
 from dataclasses import asdict, dataclass
 
-from livekit.utils import camel_case_dict
+from livekit import _utils  # noqa
 
 
 def test_camel_case_dict():
@@ -9,5 +9,5 @@ def test_camel_case_dict():
         hello_world: str
 
     my_test = MyTest("hello")
-    d = asdict(my_test, dict_factory=camel_case_dict)
+    d = asdict(my_test, dict_factory=_utils.camel_case_dict)
     assert d == {"helloWorld": "hello"}

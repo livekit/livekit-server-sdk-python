@@ -5,8 +5,8 @@ cd "$( dirname "$( dirname "${BASH_SOURCE[0]}" )" )"
 source bin/lib.sh
 
 MODULE_ROOT="livekit"
-PYTHON_OUT_DIR="$MODULE_ROOT/proto"
-TWIRP_OUT_DIR="$MODULE_ROOT/twirp"
+PYTHON_OUT_DIR="$MODULE_ROOT/_proto"
+TWIRP_OUT_DIR="$MODULE_ROOT/_twirp"
 PROTO_DIR="protocol"  # where the .proto files are
 
 # check for dependencies
