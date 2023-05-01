@@ -13,7 +13,7 @@ API Reference: https://docs.livekit.io/guides/server-api
 ```py
 import livekit
 
-grant = livekit.VideoGrant(room_join=True, room_name="My Cool Room")
+grant = livekit.VideoGrant(room_join=True, room="My Cool Room")
 access_token = livekit.AccessToken("<api key>", "<api secret>", grant=grant, identity="bob", name="Bob")
 token = access_token.to_jwt()
 ```
@@ -25,7 +25,7 @@ import livekit
 
 client = livekit.RoomServiceClient("<host>", "<api key>", "<api secret>")
 client.mute_published_track(
-    room_name="<room name>",
+    room="<room name>",
     identity="Bob",
     track_sid="<track sid>",
     muted=True,
