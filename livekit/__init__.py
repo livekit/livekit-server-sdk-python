@@ -4,7 +4,7 @@ Loosely modeled after the official LiveKit Server SDK:
 https://docs.livekit.io/server-sdk-js/
 """
 
-__version__ = "0.4.1"
+__version__ = "1.0.0"
 
 import calendar
 import dataclasses

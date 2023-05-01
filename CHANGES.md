@@ -7,6 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.0.0] - 2023-05-01
+
 ### Changed
 
 - Updated LiveKit protocol to v1.5.4
@@ -134,7 +136,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Initial release
 - [LiveKit protocol v0.11.0](https://github.com/livekit/protocol/releases/tag/v0.11.0)
 
-[Unreleased]: https://github.com/tradablebits/livekit-server-sdk-python/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/tradablebits/livekit-server-sdk-python/compare/v1.0.0...HEAD
+
+[1.0.0]: https://github.com/tradablebits/livekit-server-sdk-python/compare/v0.4.1...v1.0.0
 
 [0.4.1]: https://github.com/tradablebits/livekit-server-sdk-python/compare/v0.4.0...v0.4.1
 
