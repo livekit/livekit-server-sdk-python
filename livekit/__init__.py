@@ -22,6 +22,9 @@ from livekit import twirp as _twirp
 DEFAULT_TOKEN_TTL = datetime.timedelta(hours=6)
 
 
+SOURCE = t.Literal["camera", "microphone", "screen_share", "screen_share_audio"]
+
+
 @dataclasses.dataclass
 class VideoGrant:
     room_create: t.Optional[bool] = None
@@ -29,11 +32,23 @@ class VideoGrant:
     room_list: t.Optional[bool] = None
     room_record: t.Optional[bool] = None
     room_admin: t.Optional[bool] = None
+    ingress_admin: t.Optional[bool] = None
     room: t.Optional[str] = None
     can_publish: t.Optional[bool] = None
     can_subscribe: t.Optional[bool] = None
     can_publish_data: t.Optional[bool] = None
+    can_publish_sources: t.Optional[t.List[SOURCE]] = None
+    can_update_own_metadata: t.Optional[bool] = None
     hidden: t.Optional[bool] = None
+    recorder: t.Optional[bool] = None
+
+    def __post_init__(self):
+        if self.can_publish_sources:
+            invalid_sources = set(self.can_publish_sources) - set(t.get_args(SOURCE))
+            if invalid_sources:
+                raise ValueError(
+                    f"Invalid can_publish_sources values: {invalid_sources}"
+                )
 
 
 @dataclasses.dataclass
