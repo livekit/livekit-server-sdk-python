@@ -1,3 +1,5 @@
+This repo has been deprecated, it's been superceded by https://github.com/livekit/python-sdks/
+
 # LiveKit Server SDK
 
 ![https://pypi.org/project/livekit-server-sdk-python/](https://img.shields.io/pypi/v/livekit-server-sdk-python.svg)
